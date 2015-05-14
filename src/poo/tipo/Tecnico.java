@@ -1,4 +1,4 @@
-package caio.tipo;
+package poo.tipo;
 
 import java.util.ArrayList;
 

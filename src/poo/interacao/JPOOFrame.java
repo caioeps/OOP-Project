@@ -1,4 +1,8 @@
-package caio.interaçao;
+package poo.interacao;
+
+import poo.exceptions.*;
+import poo.logica.*;
+import poo.tipo.*;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
