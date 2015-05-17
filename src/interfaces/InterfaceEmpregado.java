@@ -1,4 +1,4 @@
-package poo.tipo;
+package interfaces;
 
 import java.util.ArrayList;
 
@@ -26,4 +26,16 @@ public interface InterfaceEmpregado {
 	public ArrayList<Integer> getDataDem();
 	
 	public void setDataDem(int d, int m, int a);
+        
+        public ArrayList<String> getNotes();
+	
+	public void addNotes(String str);
+        
+        public void aumentoPorc(double p);
+        
+        public void aumentoLiq(double l);
+        
+        public void decrescimoPorc(double p);
+	
+	public void decrescimoLiq(double l);
 }

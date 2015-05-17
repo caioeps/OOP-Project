@@ -1,5 +1,10 @@
 package poo.tipo;
+
+import interfaces.InterfaceEmpregado;
+
 import java.util.ArrayList;
+
+import poo.exceptions.*;
 
 
 abstract class Empregado implements InterfaceEmpregado{
@@ -9,6 +14,8 @@ abstract class Empregado implements InterfaceEmpregado{
 	protected boolean isAtivo;
 	protected ArrayList<Integer> dataAdm; // AAAA/MM/DD // x[0]/x[1]/x[2]
 	protected ArrayList<Integer> dataDem; // AAAA/MM/DD // x[0]/x[1]/x[2]
+	protected ArrayList<String> notes;
+        protected static double SAL_MIN = 780.0;
 	
 	
 	public Empregado(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem) {
@@ -18,6 +25,7 @@ abstract class Empregado implements InterfaceEmpregado{
 		this.isAtivo = true;
 		this.dataAdm = dataAdm;
 		this.dataDem = dataDem;
+		this.notes = new ArrayList<String>();
 	}
 
 
@@ -27,7 +35,12 @@ abstract class Empregado implements InterfaceEmpregado{
 	}
 	
 	public void setSalario(double salario) {
-		this.salario = salario;
+		if (salario < 0.0)
+			throw new SalarioException("Erro: valor de salario invalido.");
+		else if(salario < SAL_MIN)
+			throw new SalarioException("Inserir salario maior ou igual ao salario minimo.");
+		else
+			this.salario = salario;
 	}
 	
 	public String getNome() {
@@ -73,6 +86,30 @@ abstract class Empregado implements InterfaceEmpregado{
 		this.dataDem.add(m);
 		this.dataDem.add(d);
 	}
+	
+	public ArrayList<String> getNotes(){
+		return this.notes;
+	}
+	
+	public void addNotes(String str){
+		this.notes.add(str);
+	}
+        
+        public void aumentoPorc(double p){
+            this.salario += this.salario*(p/100);
+        }
+        
+        public void aumentoLiq(double l){
+            this.salario += l;
+        }
+        
+        public void decrescimoPorc(double p){
+            this.salario -= this.salario*(p/100);
+        }
+	
+	public void decrescimoLiq(double l){
+            this.salario -= l;
+        }
 	
 	
 }

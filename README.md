@@ -11,6 +11,8 @@ A fazer:
 		Legal;
 		Gerente;
 		Marketing(em geral);
+		Educação;
+		RH;
 
 Fazendo:
 	Classes:
