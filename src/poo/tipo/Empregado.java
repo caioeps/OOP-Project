@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import poo.exceptions.*;
 
 
-abstract class Empregado implements InterfaceEmpregado{
+public abstract class Empregado implements InterfaceEmpregado{
 	protected String nome;
 	protected double salario;
 	protected String cpf;

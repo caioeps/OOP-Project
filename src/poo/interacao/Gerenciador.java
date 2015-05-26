@@ -5,6 +5,12 @@
  */
 package poo.interacao;
 
+import java.util.ArrayList;
+
+import interfaces.InterfaceEmpregado;
+import poo.tipo.*;
+
+
 /**
  *
  * @author caioe_000
@@ -114,6 +120,8 @@ public class Gerenciador extends javax.swing.JFrame {
                 new Gerenciador().setVisible(true);
             }
         });
+        
+        InterfaceEmpregado lol = new Tecnico();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
