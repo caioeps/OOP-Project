@@ -8,10 +8,11 @@ import poo.tipo.*;
 public class Leitor {
 	private FileReader reader;
 	private BufferedReader breader;
-	private Empregado;
+	private Empregado emp;
         
-	public Leitor() throws IOException{
-		
+	public Leitor(Empregado emp) throws IOException{
+		this.emp = emp;
+                reader = new FileReader();
 	}
 	
 	public double getFaturaTotal() throws IOException{

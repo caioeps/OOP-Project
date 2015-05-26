@@ -32,6 +32,8 @@ public abstract class Empregado implements InterfaceEmpregado{
 
 	public double getSalario() {
 		return this.salario;
+                
+                
 	}
 	
 	public void setSalario(double salario) {
