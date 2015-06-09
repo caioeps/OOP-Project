@@ -3,7 +3,7 @@ package poo.tipo;
 import java.util.ArrayList;
 
 import poo.exceptions.*;
-import interfaces.InterfaceEmpregado;
+import poo.interfaces.InterfaceEmpregado;
 
 
 public class Engenheiro extends Empregado implements InterfaceEmpregado{
