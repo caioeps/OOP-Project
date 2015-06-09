@@ -5,6 +5,8 @@
  */
 package poo.interacao;
 
+import poo.tipo.*;
+
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
@@ -14,7 +16,7 @@ import javax.swing.JFrame;
  */
 public class AddFrame extends javax.swing.JFrame {
     //Minhas variaveis
-    private Aluno aluno;
+    private Empregado emp;
     private ListaFrame listaFrame; //Para copiar, modificar e retornar a lista de alunos.
     
     //Minhas funções
@@ -23,16 +25,11 @@ public class AddFrame extends javax.swing.JFrame {
         this.listaFrame = listaFrame;
     }
     
-    public Aluno getAluno(){
-        return this.aluno;
+    public Empregado getEmpregado(){
+        return this.emp;
     }
-    
-    public void setAluno(String nome, String matricula, String email){
-        this.aluno = new Aluno(nome, matricula, email);
-        System.gc(); //Chama o GC pra limpar o objeto anterior
-    }
-    
-    public ArrayList<Aluno> getLista(){
+        
+    public ArrayList<Empregado> getLista(){
        return this.getListaFrame().lista;
         
     }
@@ -49,18 +46,24 @@ public class AddFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         labelNome = new javax.swing.JLabel();
-        labelMatricula = new javax.swing.JLabel();
+        labelSalario = new javax.swing.JLabel();
         labelEmail = new javax.swing.JLabel();
         fieldNome = new javax.swing.JTextField();
-        fieldMatricula = new javax.swing.JTextField();
+        fieldSalario = new javax.swing.JTextField();
         fieldEmail = new javax.swing.JTextField();
         btnAdd = new javax.swing.JToggleButton();
+        labelCpf = new javax.swing.JLabel();
+        fieldCpf = new javax.swing.JTextField();
+        labelEmail1 = new javax.swing.JLabel();
+        boxDia = new javax.swing.JComboBox();
+        boxMes = new javax.swing.JComboBox();
+        fieldAno = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelNome.setText("Nome");
 
-        labelMatricula.setText("Matricula");
+        labelSalario.setText("Salario");
 
         labelEmail.setText("Email");
 
@@ -70,9 +73,9 @@ public class AddFrame extends javax.swing.JFrame {
             }
         });
 
-        fieldMatricula.addActionListener(new java.awt.event.ActionListener() {
+        fieldSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldMatriculaActionPerformed(evt);
+                fieldSalarioActionPerformed(evt);
             }
         });
 
@@ -89,6 +92,32 @@ public class AddFrame extends javax.swing.JFrame {
             }
         });
 
+        labelCpf.setText("CPF");
+
+        fieldCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCpfActionPerformed(evt);
+            }
+        });
+
+        labelEmail1.setText("Data de admissão");
+
+        boxDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        boxDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxDiaActionPerformed(evt);
+            }
+        });
+
+        boxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+
+        fieldAno.setText("AAAA");
+        fieldAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldAnoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,38 +126,66 @@ public class AddFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelMatricula)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdd)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNome)
+                            .addComponent(labelSalario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(fieldSalario)
+                            .addComponent(fieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelNome)
+                        .addComponent(labelCpf)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAdd)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelEmail1)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNome)
                     .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMatricula)
-                    .addComponent(fieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(labelSalario)
+                    .addComponent(fieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCpf)
+                    .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEmail)
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(labelEmail1)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(btnAdd)
                 .addContainerGap())
         );
@@ -140,9 +197,9 @@ public class AddFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldNomeActionPerformed
 
-    private void fieldMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldMatriculaActionPerformed
+    private void fieldSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldSalarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldMatriculaActionPerformed
+    }//GEN-LAST:event_fieldSalarioActionPerformed
 
     private void fieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldEmailActionPerformed
         // TODO add your handling code here:
@@ -154,7 +211,7 @@ public class AddFrame extends javax.swing.JFrame {
         if(!this.fieldNome.getText().isEmpty()) n = this.fieldNome.getText();
         else  n = "N/A";
         
-        if(!this.fieldMatricula.getText().isEmpty()) m = this.fieldMatricula.getText();
+        if(!this.fieldSalario.getText().isEmpty()) m = this.fieldSalario.getText();
         else m = "N/A";
         
         if(!this.fieldEmail.getText().isEmpty())  e = this.fieldEmail.getText();
@@ -169,18 +226,36 @@ public class AddFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCpfActionPerformed
+
+    private void boxDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxDiaActionPerformed
+
+    private void fieldAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldAnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox boxDia;
+    private javax.swing.JComboBox boxMes;
     private javax.swing.JToggleButton btnAdd;
+    private javax.swing.JTextField fieldAno;
+    private javax.swing.JTextField fieldCpf;
     private javax.swing.JTextField fieldEmail;
-    private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldNome;
+    private javax.swing.JTextField fieldSalario;
+    private javax.swing.JLabel labelCpf;
     private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelMatricula;
+    private javax.swing.JLabel labelEmail1;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelSalario;
     // End of variables declaration//GEN-END:variables
 
     /**

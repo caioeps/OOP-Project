@@ -7,8 +7,8 @@ public class Tecnico extends Empregado{
     
         private String licensa;
 
-	public Tecnico(String nome, double salario, String cpf,	ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem) {
-		super(nome, salario, cpf, dataAdm, dataDem);
+	public Tecnico(String nome, double salario, String cpf,	ArrayList<Integer> dataAdm, String email) {
+		super(nome, salario, cpf, dataAdm, email);
 	}
 
     public String getLicensa() {

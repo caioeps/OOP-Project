@@ -21,13 +21,13 @@ public abstract class Empregado implements InterfaceEmpregado{
 
 
 
-    public Empregado(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem) {
+    public Empregado(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email) {
             this.nome = nome;
             this.salario = salario;
             this.cpf = cpf;
             this.isAtivo = true;
             this.dataAdm = dataAdm;
-            this.dataDem = dataDem;
+            this.email = email;
             this.notes = new ArrayList<String>();
     }
 

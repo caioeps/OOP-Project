@@ -10,8 +10,8 @@ public class Engenheiro extends Empregado implements InterfaceEmpregado{
 	
 	private String eng;
 
-	public Engenheiro(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem, String eng) {
-		super(nome, salario, cpf, dataAdm, dataDem);
+	public Engenheiro(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String eng) {
+		super(nome, salario, cpf, dataAdm, email);
 		
 		this.eng = eng;
 	}

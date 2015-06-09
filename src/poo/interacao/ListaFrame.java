@@ -39,7 +39,6 @@ import javax.swing.table.DefaultTableModel;
     public void passaLista(AddFrame frame){
         this.lista = frame.getLista();
         System.out.println("função passa lista ---");
-        imprimeLista();
     }
 
     /**
@@ -65,12 +64,19 @@ import javax.swing.table.DefaultTableModel;
 
             },
             new String [] {
-                "Nome", "Matricula", "Email"
+                "Nome", "Salario", "CPF", "Emaill"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -78,7 +84,7 @@ import javax.swing.table.DefaultTableModel;
         });
         jScrollPane1.setViewportView(table);
 
-        menuFile.setText("File");
+        menuFile.setText("Add");
         menuFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileActionPerformed(evt);
@@ -127,8 +133,7 @@ import javax.swing.table.DefaultTableModel;
 
     private void menuBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnAddActionPerformed
         // TODO add your handling code here:
-        Aluno aux;
-        
+       
         inst = new AddFrame(this);
         inst.setVisible(true);
         inst.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -139,25 +144,17 @@ import javax.swing.table.DefaultTableModel;
         // TODO add your handling code here:
        
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
-        
-        //this.lista = this.inst.getLista();
-        
-   
+ 
         imprimeLista();
-                
-        /*dtm.addColumn(new Object[]{
-            "Nome", 
-            "Matricula", 
-            "Email"
-        });*/
         
-        for(Aluno key : this.lista){
+        for(Empregado key : this.lista){
             
             Vector row = new Vector();
              
             this.table.setRowSelectionAllowed(true);
             row.add(key.getNome());
-            row.add(key.getMatricula());
+            row.add(key.getSalario());
+            row.add(key.getCpf());
             row.add(key.getEmail());
                        
             dtm.addRow(row);
