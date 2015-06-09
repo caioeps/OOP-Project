@@ -8,6 +8,7 @@ import poo.exceptions.*;
 
 
 public abstract class Empregado implements InterfaceEmpregado{
+
     protected String nome;
     protected double salario;
     protected String cpf;
@@ -17,6 +18,7 @@ public abstract class Empregado implements InterfaceEmpregado{
     protected ArrayList<String> notes;
     private String email;
     protected static double SAL_MIN = 780.0;
+
 
 
     public Empregado(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem) {
@@ -119,6 +121,7 @@ public abstract class Empregado implements InterfaceEmpregado{
     public void setEmail(String email) {
         this.email = email;
     }
+
 	
 	
 }

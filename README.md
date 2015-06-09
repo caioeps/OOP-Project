@@ -1,26 +1,68 @@
 # POO
-Projeto para disciplina de POO
 
-Sistema de gerenciamento de funcion·rios
 
-A fazer:
-	AnotaÁıes;
-	Classes:
-		FinanÁas;
-		Saude(subs dentro de variavel);
-		Legal;
-		Gerente;
-		Marketing(em geral);
-		EducaÁ„o;
-		RH;
+Projeto para disciplina de POO.
+Sistema de gerenciamento de funcion√°rios.
 
-Fazendo:
-	Classes:
-		Empregado(abstrata);
-		Engenheiro(subs dentro de variavel);
-		Tecnico(subs dentro de variavel);
+---
 
-	Interface gr·fica:
-		Janela cheia, lista dos empregados, menu superior para operaÁıes;
+## OBJETIVOS
 
-Feito:
+
+- Classe, construtor, encapsulamento  e pacotes
+- M√©todos para alterar o comportamento dos objetos
+- Interface
+- Classe abstrata
+- Heran√ßa
+- Polimorfismo
+- M√©todos para Adicionar, Listar, Alterar e Buscar objetos
+- ArrayList
+- Exce√ß√µes para m√©todos do item 7
+- Tratamento para o tamanho e tipo da entrada de dados 
+- Arquivos
+- GUI
+
+---
+
+## A fazer:
+- ### Classes:
+ - Finan√ßas
+ - Saude(subs dentro de variavel)		
+ - Gerente
+ - Marketing(em geral)
+ - Educa√ß√£o
+
+	
+- ### Metodos:
+ - Listar
+ - Adicionar
+ - Remover
+ - Editar
+ - Relatorio
+
+---
+
+## Fazendo:
+- ### Classes:
+
+
+- ### Interface gr√°fica:
+ - Janela cheia
+ - lista dos empregados
+ - menu superior para opera√ß√µes
+
+
+---
+
+
+##Feito:	
+- ### Classes:	
+ - Empregado(abstrata)
+ - Engenheiro(subs dentro de variavel)
+ - Sem superior(funcao dentro de variavel)
+ - Tecnico(subs dentro de variavel)
+ - Legal
+ - RH
+
+
+
