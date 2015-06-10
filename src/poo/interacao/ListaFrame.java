@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poo.interacao;
 
 import poo.tipo.*;
+import poo.interfaces.InterfaceEmpregado;
 
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,8 +16,18 @@ import javax.swing.table.DefaultTableModel;
  public class ListaFrame extends javax.swing.JFrame {
     
     //Minhas variaveis
-    AddFrame inst;
+    AddFrameEngenheiro frameEngenheiro;
+    AddFrameEnsino frameEnsino;
+    AddFrameLegal frameLegal;
+    AddFrameRH frameRh;
+    AddFrameSemSuperior frameSemSuperior;
+    AddFrameTecnico frameTecnico;
+    
     ArrayList<Empregado> lista;
+    
+    
+    
+    //FIM das minhas variáveis
     
     /**
      * Creates new form ListaFrame
@@ -36,10 +43,32 @@ import javax.swing.table.DefaultTableModel;
             System.out.println(key.getNome() + " | " + key.getCpf() + " | " + key.getEmail());
     }
     
-    public void passaLista(AddFrame frame){
-        this.lista = frame.getLista();
-        System.out.println("função passa lista ---");
+    public void passaLista(InterfaceEmpregado eng){
+        this.lista.add((Empregado) eng);
     }
+    
+    /*
+    public void passaLista(Ensino ens){
+        this.lista.add(ens);
+    }
+    
+    public void passaLista(Legal legal){
+        this.lista.add(legal);
+    }
+    
+    public void passaLista(AddFrameRH frame){
+        this.lista = frame.getLista();
+    }
+    
+    public void passaLista(AddFrameSemSuperior frame){
+        this.lista = frame.getLista();
+    }
+    
+    public void passaLista(AddFrameTecnico frame){
+        this.lista = frame.getLista();
+    }
+    */
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +85,13 @@ import javax.swing.table.DefaultTableModel;
         menuFile = new javax.swing.JMenu();
         menuBtnAdd = new javax.swing.JMenuItem();
         menuBtnList = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        itemEngenheiro = new javax.swing.JMenuItem();
+        itemEnsino = new javax.swing.JMenuItem();
+        itemLegal = new javax.swing.JMenuItem();
+        itemRh = new javax.swing.JMenuItem();
+        itemTecnico = new javax.swing.JMenuItem();
+        itemSemSuperior = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,7 +120,7 @@ import javax.swing.table.DefaultTableModel;
         });
         jScrollPane1.setViewportView(table);
 
-        menuFile.setText("Add");
+        menuFile.setText("File");
         menuFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuFileActionPerformed(evt);
@@ -109,6 +145,58 @@ import javax.swing.table.DefaultTableModel;
         });
         menuFile.add(menuBtnList);
 
+        jMenu1.setText("Add");
+
+        itemEngenheiro.setText("Engenheiro");
+        itemEngenheiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEngenheiroActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemEngenheiro);
+
+        itemEnsino.setText("Ensino");
+        itemEnsino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEnsinoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemEnsino);
+
+        itemLegal.setText("Setor legal");
+        itemLegal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLegalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemLegal);
+
+        itemRh.setText("Recursos Humanos");
+        itemRh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRhActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemRh);
+
+        itemTecnico.setText("Tecnico");
+        itemTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemTecnicoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemTecnico);
+
+        itemSemSuperior.setText("Sem superior");
+        itemSemSuperior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSemSuperiorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemSemSuperior);
+
+        menuFile.add(jMenu1);
+
         jMenuBar1.add(menuFile);
 
         setJMenuBar(jMenuBar1);
@@ -117,11 +205,11 @@ import javax.swing.table.DefaultTableModel;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
         );
 
         pack();
@@ -130,15 +218,6 @@ import javax.swing.table.DefaultTableModel;
     private void menuFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileActionPerformed
         // TODO add your handling code here:        
     }//GEN-LAST:event_menuFileActionPerformed
-
-    private void menuBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnAddActionPerformed
-        // TODO add your handling code here:
-       
-        inst = new AddFrame(this);
-        inst.setVisible(true);
-        inst.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-    }//GEN-LAST:event_menuBtnAddActionPerformed
 
     private void menuBtnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnListActionPerformed
         // TODO add your handling code here:
@@ -156,6 +235,7 @@ import javax.swing.table.DefaultTableModel;
             row.add(key.getSalario());
             row.add(key.getCpf());
             row.add(key.getEmail());
+            
                        
             dtm.addRow(row);
             
@@ -163,6 +243,46 @@ import javax.swing.table.DefaultTableModel;
         
         
     }//GEN-LAST:event_menuBtnListActionPerformed
+
+    private void menuBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnAddActionPerformed
+            
+    }//GEN-LAST:event_menuBtnAddActionPerformed
+
+    private void itemEngenheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEngenheiroActionPerformed
+        frameEngenheiro = new AddFrameEngenheiro(this);
+        frameEngenheiro.setVisible(true);
+        frameEngenheiro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_itemEngenheiroActionPerformed
+
+    private void itemEnsinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnsinoActionPerformed
+        frameEnsino = new AddFrameEnsino(this);
+        frameEnsino.setVisible(true);
+        frameEnsino.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_itemEnsinoActionPerformed
+
+    private void itemLegalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLegalActionPerformed
+        frameLegal = new AddFrameLegal(this);
+        frameLegal.setVisible(true);
+        frameLegal.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_itemLegalActionPerformed
+
+    private void itemRhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRhActionPerformed
+        frameRh = new AddFrameRH(this);
+        frameRh.setVisible(true);
+        frameRh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_itemRhActionPerformed
+
+    private void itemTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTecnicoActionPerformed
+        frameTecnico = new AddFrameTecnico(this);
+        frameTecnico.setVisible(true);
+        frameTecnico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_itemTecnicoActionPerformed
+
+    private void itemSemSuperiorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSemSuperiorActionPerformed
+        frameSemSuperior = new AddFrameSemSuperior(this);
+        frameSemSuperior.setVisible(true);
+        frameSemSuperior.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_itemSemSuperiorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +321,13 @@ import javax.swing.table.DefaultTableModel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemEngenheiro;
+    private javax.swing.JMenuItem itemEnsino;
+    private javax.swing.JMenuItem itemLegal;
+    private javax.swing.JMenuItem itemRh;
+    private javax.swing.JMenuItem itemSemSuperior;
+    private javax.swing.JMenuItem itemTecnico;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menuBtnAdd;

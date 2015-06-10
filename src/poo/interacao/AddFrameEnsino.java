@@ -317,7 +317,7 @@ public class AddFrame extends javax.swing.JFrame {
         data.add((this.boxMes.getSelectedIndex() + 1)); // Número do mês
         data.add((this.boxDia.getSelectedIndex() +1)); //Número do dia
                        
-        this.listaFrame.lista.add(new InterfaceEmpregado(nome, salario, cpf, data, email)); //AQUI É CLASSE ABSTRATA. CRIAR OUTROS FRAMES COM AS CLASSES CORRETAS
+        this.listaFrame.lista.add(new Empregado(nome, salario, cpf, data, email)); //AQUI É CLASSE ABSTRATA. CRIAR OUTROS FRAMES COM AS CLASSES CORRETAS
         
         listaFrame.passaLista(this);
         

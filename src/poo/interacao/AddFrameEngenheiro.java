@@ -15,13 +15,13 @@ import javax.swing.JFrame;
  *
  * @author caioe_000
  */
-public class AddFrame extends javax.swing.JFrame {
+public class AddFrameEngenheiro extends javax.swing.JFrame {
     //Minhas variaveis
     private Empregado emp;
     private ListaFrame listaFrame; //Para copiar, modificar e retornar a lista de alunos.
     
     //Minhas funções
-    public AddFrame(ListaFrame listaFrame) {
+    public AddFrameEngenheiro(ListaFrame listaFrame) {
         initComponents();
         this.listaFrame = listaFrame;
     }
@@ -149,6 +149,8 @@ public class AddFrame extends javax.swing.JFrame {
         boxDia = new javax.swing.JComboBox();
         boxMes = new javax.swing.JComboBox();
         fieldAno = new javax.swing.JTextField();
+        labelArea = new javax.swing.JLabel();
+        fieldArea = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -165,12 +167,14 @@ public class AddFrame extends javax.swing.JFrame {
             }
         });
 
+        fieldSalario.setToolTipText("Valor em reais. Ex: 768.97");
         fieldSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldSalarioActionPerformed(evt);
             }
         });
 
+        fieldEmail.setToolTipText("you@service.com");
         fieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldEmailActionPerformed(evt);
@@ -186,6 +190,7 @@ public class AddFrame extends javax.swing.JFrame {
 
         labelCpf.setText("CPF");
 
+        fieldCpf.setToolTipText("Apenas números");
         fieldCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldCpfActionPerformed(evt);
@@ -207,6 +212,15 @@ public class AddFrame extends javax.swing.JFrame {
         fieldAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldAnoActionPerformed(evt);
+            }
+        });
+
+        labelArea.setText("Área");
+
+        fieldArea.setToolTipText("Elétrica, Civil, Computação, Metalúrgica etc");
+        fieldArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldAreaActionPerformed(evt);
             }
         });
 
@@ -236,20 +250,23 @@ public class AddFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelEmail1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelEmail1)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(labelArea)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(fieldArea, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,14 +287,18 @@ public class AddFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEmail)
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelArea)
+                    .addComponent(fieldArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addComponent(labelEmail1)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(btnAdd)
                 .addContainerGap())
         );
@@ -298,31 +319,50 @@ public class AddFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldEmailActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String nome, salario, email, cpf;
+        String nome=null, email=null, cpf=null, area=null; //Apenas inicializando para posterior checagem
+        Double salario=null;
         ArrayList<Integer> data = new ArrayList<>();
+        Engenheiro aux;
         
         if(!this.fieldNome.getText().isEmpty()) nome = this.fieldNome.getText();
         else  nome = "N/A";
         
-        if(!this.fieldSalario.getText().isEmpty()) salario = this.fieldSalario.getText();
-        else salario = "N/A";
+        if(!this.fieldSalario.getText().isEmpty()) 
+            salario = Double.parseDouble(this.fieldSalario.getText());
+        else{
+            this.labelSalario.setText("<HTML><font color=black>Salario</font><font color=red>*</font></HTML>"); //Salario*, com * em vermelho
+        }
         
         if(!this.fieldEmail.getText().isEmpty())  email = this.fieldEmail.getText();
-        else email = "N/A";
+        else{
+            this.labelEmail.setText("<HTML><font color=black>Email</font><font color=red>*</font></HTML>"); //Email*, com * em vermelho
+        }
         
         if(!this.fieldCpf.getText().isEmpty())  cpf = this.fieldCpf.getText();
-        else cpf = "N/A";
+        else{
+            this.labelCpf.setText("<HTML><font color=black>CPF</font><font color=red>*</font></HTML>"); //CPF*, com * em vermelho
+        }
+        
+        if(!this.fieldArea.getText().isEmpty())  area = this.fieldArea.getText();
+        else{
+            this.labelArea.setText("<HTML><font color=black>Area</font><font color=red>*</font></HTML>"); //Area*, com * em vermelho
+        }
         
         data.add(Integer.parseInt(this.fieldAno.getText())); //Pega o campo ano e transforma p/ int
         data.add((this.boxMes.getSelectedIndex() + 1)); // Número do mês
         data.add((this.boxDia.getSelectedIndex() +1)); //Número do dia
                        
-        this.listaFrame.lista.add(new InterfaceEmpregado(nome, salario, cpf, data, email)); //AQUI É CLASSE ABSTRATA. CRIAR OUTROS FRAMES COM AS CLASSES CORRETAS
+        aux = new Engenheiro(nome, salario, cpf, data, email, area);
         
-        listaFrame.passaLista(this);
+        this.listaFrame.lista.add(aux); //AQUI É CLASSE ABSTRATA. CRIAR OUTROS FRAMES COM AS CLASSES CORRETAS
         
+        listaFrame.passaLista(aux);
         
-        this.dispose();
+        if((email==null) || (nome==null) || (cpf==null) || (area==null) || (salario==null)) {
+           //faz nada
+        }else{
+            this.dispose();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed
@@ -337,6 +377,10 @@ public class AddFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldAnoActionPerformed
 
+    private void fieldAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAreaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldAreaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -346,10 +390,12 @@ public class AddFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox boxMes;
     private javax.swing.JToggleButton btnAdd;
     private javax.swing.JTextField fieldAno;
+    private javax.swing.JTextField fieldArea;
     private javax.swing.JTextField fieldCpf;
     private javax.swing.JTextField fieldEmail;
     private javax.swing.JTextField fieldNome;
     private javax.swing.JTextField fieldSalario;
+    private javax.swing.JLabel labelArea;
     private javax.swing.JLabel labelCpf;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelEmail1;

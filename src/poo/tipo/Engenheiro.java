@@ -6,7 +6,7 @@ import poo.exceptions.*;
 import poo.interfaces.InterfaceEmpregado;
 
 
-public class Engenheiro extends Empregado implements InterfaceEmpregado{
+public class Engenheiro extends Empregado{
 	
 	private String eng;
 
@@ -23,8 +23,5 @@ public class Engenheiro extends Empregado implements InterfaceEmpregado{
 	public void setEng(String eng) {
 		this.eng = eng;
 	}
-	
-	
-	
 	
 }
