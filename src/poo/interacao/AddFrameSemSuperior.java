@@ -15,24 +15,19 @@ import javax.swing.JFrame;
  *
  * @author caioe_000
  */
-public class AddFrame extends javax.swing.JFrame {
+public class AddFrameSemSuperior extends javax.swing.JFrame {
     //Minhas variaveis
     private Empregado emp;
     private ListaFrame listaFrame; //Para copiar, modificar e retornar a lista de alunos.
     
     //Minhas funções
-    public AddFrame(ListaFrame listaFrame) {
+    public AddFrameSemSuperior(ListaFrame listaFrame) {
         initComponents();
         this.listaFrame = listaFrame;
     }
     
     public Empregado getEmpregado(){
         return this.emp;
-    }
-        
-    public ArrayList<Empregado> getLista(){
-       return this.getListaFrame().lista;
-        
     }
     
     public int dataMesParaNumero(String str){
@@ -149,6 +144,8 @@ public class AddFrame extends javax.swing.JFrame {
         boxDia = new javax.swing.JComboBox();
         boxMes = new javax.swing.JComboBox();
         fieldAno = new javax.swing.JTextField();
+        fieldFuncao = new javax.swing.JTextField();
+        labelFuncao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -210,6 +207,14 @@ public class AddFrame extends javax.swing.JFrame {
             }
         });
 
+        fieldFuncao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldFuncaoActionPerformed(evt);
+            }
+        });
+
+        labelFuncao.setText("Funcao");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,20 +241,23 @@ public class AddFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelEmail1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelEmail1)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(labelFuncao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(fieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,14 +278,18 @@ public class AddFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEmail)
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFuncao)
+                    .addComponent(fieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
                 .addComponent(labelEmail1)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(btnAdd)
                 .addContainerGap())
         );
@@ -298,31 +310,61 @@ public class AddFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldEmailActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String nome, salario, email, cpf;
+        String nome=null, email=null, cpf=null, funcao=null; //Apenas inicializando para posterior checagem
+        Double salario=null;
         ArrayList<Integer> data = new ArrayList<>();
+        SemSuperior aux;
         
-        if(!this.fieldNome.getText().isEmpty()) nome = this.fieldNome.getText();
-        else  nome = "N/A";
+        if(!this.fieldNome.getText().isEmpty()) {
+            this.labelSalario.setText("Nome");
+            nome = this.fieldNome.getText();
+        }else  {
+            this.labelNome.setText("<HTML><font color=black>Nome</font><font color=red>*</font></HTML>"); //Nome*, com * em vermelho
+        }
         
-        if(!this.fieldSalario.getText().isEmpty()) salario = this.fieldSalario.getText();
-        else salario = "N/A";
+        if(!this.fieldSalario.getText().isEmpty()) {
+            this.labelSalario.setText("Salario");
+            salario = Double.parseDouble(this.fieldSalario.getText());
+        }else{
+            this.labelSalario.setText("<HTML><font color=black>Salario</font><font color=red>*</font></HTML>"); //Salario*, com * em vermelho
+        }
         
-        if(!this.fieldEmail.getText().isEmpty())  email = this.fieldEmail.getText();
-        else email = "N/A";
+        if(!this.fieldEmail.getText().isEmpty()) {
+            this.labelSalario.setText("Email");
+            email = this.fieldEmail.getText();
+        }else{
+            this.labelEmail.setText("<HTML><font color=black>Email</font><font color=red>*</font></HTML>"); //Email*, com * em vermelho
+        }
         
-        if(!this.fieldCpf.getText().isEmpty())  cpf = this.fieldCpf.getText();
-        else cpf = "N/A";
+        if(!this.fieldCpf.getText().isEmpty())  {
+            this.labelCpf.setText("CPF");
+            cpf = this.fieldCpf.getText();
+        }else{
+            this.labelCpf.setText("<HTML><font color=black>CPF</font><font color=red>*</font></HTML>"); //CPF*, com * em vermelho
+        }
+        
+        if(!this.fieldFuncao.getText().isEmpty())  {
+            this.labelFuncao.setText("Funcao");
+            funcao = this.fieldFuncao.getText();
+        }else{
+            this.labelFuncao.setText("<HTML><font color=black>Funcao</font><font color=red>*</font></HTML>"); //Funcao*, com * em vermelho
+        }
         
         data.add(Integer.parseInt(this.fieldAno.getText())); //Pega o campo ano e transforma p/ int
         data.add((this.boxMes.getSelectedIndex() + 1)); // Número do mês
         data.add((this.boxDia.getSelectedIndex() +1)); //Número do dia
                        
-        this.listaFrame.lista.add(new Empregado(nome, salario, cpf, data, email)); //AQUI É CLASSE ABSTRATA. CRIAR OUTROS FRAMES COM AS CLASSES CORRETAS
+        aux = new SemSuperior(nome, salario, cpf, data, email, funcao);
+                      
         
-        listaFrame.passaLista(this);
         
-        
-        this.dispose();
+        if((nome==null) || (email==null) || (cpf==null) || (funcao==null) || (salario==null)) {
+           //faz nada
+        }else{
+            listaFrame.passaLista(aux);
+            this.listaFrame.atualizaLista();
+            this.dispose();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed
@@ -337,6 +379,10 @@ public class AddFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldAnoActionPerformed
 
+    private void fieldFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldFuncaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldFuncaoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -348,11 +394,13 @@ public class AddFrame extends javax.swing.JFrame {
     private javax.swing.JTextField fieldAno;
     private javax.swing.JTextField fieldCpf;
     private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldFuncao;
     private javax.swing.JTextField fieldNome;
     private javax.swing.JTextField fieldSalario;
     private javax.swing.JLabel labelCpf;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelEmail1;
+    private javax.swing.JLabel labelFuncao;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSalario;
     // End of variables declaration//GEN-END:variables

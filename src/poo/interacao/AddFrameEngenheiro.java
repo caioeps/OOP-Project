@@ -29,11 +29,6 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
     public Empregado getEmpregado(){
         return this.emp;
     }
-        
-    public ArrayList<Empregado> getLista(){
-       return this.getListaFrame().lista;
-        
-    }
     
     public int dataMesParaNumero(String str){
         int r;
@@ -324,8 +319,11 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
         ArrayList<Integer> data = new ArrayList<>();
         Engenheiro aux;
         
-        if(!this.fieldNome.getText().isEmpty()) nome = this.fieldNome.getText();
-        else  nome = "N/A";
+        if(!this.fieldNome.getText().isEmpty()) 
+            nome = this.fieldNome.getText();
+        else{
+            this.labelNome.setText("<HTML><font color=black>Nome</font><font color=red>*</font></HTML>"); //Nome*, com * em vermelho
+        }
         
         if(!this.fieldSalario.getText().isEmpty()) 
             salario = Double.parseDouble(this.fieldSalario.getText());
@@ -333,17 +331,20 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
             this.labelSalario.setText("<HTML><font color=black>Salario</font><font color=red>*</font></HTML>"); //Salario*, com * em vermelho
         }
         
-        if(!this.fieldEmail.getText().isEmpty())  email = this.fieldEmail.getText();
+        if(!this.fieldEmail.getText().isEmpty())  
+            email = this.fieldEmail.getText();
         else{
             this.labelEmail.setText("<HTML><font color=black>Email</font><font color=red>*</font></HTML>"); //Email*, com * em vermelho
         }
         
-        if(!this.fieldCpf.getText().isEmpty())  cpf = this.fieldCpf.getText();
+        if(!this.fieldCpf.getText().isEmpty())  
+            cpf = this.fieldCpf.getText();
         else{
             this.labelCpf.setText("<HTML><font color=black>CPF</font><font color=red>*</font></HTML>"); //CPF*, com * em vermelho
         }
         
-        if(!this.fieldArea.getText().isEmpty())  area = this.fieldArea.getText();
+        if(!this.fieldArea.getText().isEmpty())  
+            area = this.fieldArea.getText();
         else{
             this.labelArea.setText("<HTML><font color=black>Area</font><font color=red>*</font></HTML>"); //Area*, com * em vermelho
         }
@@ -353,14 +354,14 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
         data.add((this.boxDia.getSelectedIndex() +1)); //Número do dia
                        
         aux = new Engenheiro(nome, salario, cpf, data, email, area);
+                       
         
-        this.listaFrame.lista.add(aux); //AQUI É CLASSE ABSTRATA. CRIAR OUTROS FRAMES COM AS CLASSES CORRETAS
-        
-        listaFrame.passaLista(aux);
         
         if((email==null) || (nome==null) || (cpf==null) || (area==null) || (salario==null)) {
            //faz nada
         }else{
+            listaFrame.passaLista(aux);
+            this.listaFrame.atualizaLista();
             this.dispose();
         }
     }//GEN-LAST:event_btnAddActionPerformed

@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.table.DefaultTableModel;
+import poo.logica.Escritor;
 
 /**
  *
@@ -16,14 +17,16 @@ import javax.swing.table.DefaultTableModel;
  public class ListaFrame extends javax.swing.JFrame {
     
     //Minhas variaveis
-    AddFrameEngenheiro frameEngenheiro;
-    AddFrameEnsino frameEnsino;
-    AddFrameLegal frameLegal;
-    AddFrameRH frameRh;
-    AddFrameSemSuperior frameSemSuperior;
-    AddFrameTecnico frameTecnico;
+    private AddFrameEngenheiro frameEngenheiro;
+    private AddFrameEnsino frameEnsino;
+    private AddFrameLegal frameLegal;
+    private AddFrameRH frameRh;
+    private AddFrameSemSuperior frameSemSuperior;
+    private AddFrameTecnico frameTecnico;
     
-    ArrayList<Empregado> lista;
+    private Escritor writer;
+    
+    private ArrayList<Empregado> lista;
     
     
     
@@ -47,28 +50,26 @@ import javax.swing.table.DefaultTableModel;
         this.lista.add((Empregado) eng);
     }
     
-    /*
-    public void passaLista(Ensino ens){
-        this.lista.add(ens);
+    public void atualizaLista(){
+        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+ 
+        dtm.setRowCount(0);
+        
+        for(Empregado key : this.lista){
+            
+            Vector row = new Vector();
+             
+            this.table.setRowSelectionAllowed(true);
+            row.add(key.getNome());
+            row.add(key.getSalario());
+            row.add(key.getCpf());
+            row.add(key.getEmail());
+            
+                       
+            dtm.addRow(row);            
+        }              
     }
-    
-    public void passaLista(Legal legal){
-        this.lista.add(legal);
-    }
-    
-    public void passaLista(AddFrameRH frame){
-        this.lista = frame.getLista();
-    }
-    
-    public void passaLista(AddFrameSemSuperior frame){
-        this.lista = frame.getLista();
-    }
-    
-    public void passaLista(AddFrameTecnico frame){
-        this.lista = frame.getLista();
-    }
-    */
-    
+       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,8 +84,6 @@ import javax.swing.table.DefaultTableModel;
         table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
-        menuBtnAdd = new javax.swing.JMenuItem();
-        menuBtnList = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         itemEngenheiro = new javax.swing.JMenuItem();
         itemEnsino = new javax.swing.JMenuItem();
@@ -126,24 +125,6 @@ import javax.swing.table.DefaultTableModel;
                 menuFileActionPerformed(evt);
             }
         });
-
-        menuBtnAdd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        menuBtnAdd.setText("Add");
-        menuBtnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBtnAddActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuBtnAdd);
-
-        menuBtnList.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
-        menuBtnList.setText("List");
-        menuBtnList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBtnListActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuBtnList);
 
         jMenu1.setText("Add");
 
@@ -218,35 +199,6 @@ import javax.swing.table.DefaultTableModel;
     private void menuFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileActionPerformed
         // TODO add your handling code here:        
     }//GEN-LAST:event_menuFileActionPerformed
-
-    private void menuBtnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnListActionPerformed
-        // TODO add your handling code here:
-       
-        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
- 
-        imprimeLista();
-        
-        for(Empregado key : this.lista){
-            
-            Vector row = new Vector();
-             
-            this.table.setRowSelectionAllowed(true);
-            row.add(key.getNome());
-            row.add(key.getSalario());
-            row.add(key.getCpf());
-            row.add(key.getEmail());
-            
-                       
-            dtm.addRow(row);
-            
-        }
-        
-        
-    }//GEN-LAST:event_menuBtnListActionPerformed
-
-    private void menuBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBtnAddActionPerformed
-            
-    }//GEN-LAST:event_menuBtnAddActionPerformed
 
     private void itemEngenheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEngenheiroActionPerformed
         frameEngenheiro = new AddFrameEngenheiro(this);
@@ -330,8 +282,6 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenuItem menuBtnAdd;
-    private javax.swing.JMenuItem menuBtnList;
     private javax.swing.JMenu menuFile;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
