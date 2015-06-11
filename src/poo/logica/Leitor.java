@@ -1,19 +1,22 @@
 package poo.logica;
 
-import interfaces.InterfaceEmpregado;
+import poo.interfaces.InterfaceEmpregado;
 import java.io.*;
 import java.util.ArrayList;
 import poo.tipo.*;
 
+import java.io.FileReader;
+
 public class Leitor {
 	File file;
-        private FileReader reader;
+
+	private FileReader fReader;
 	private BufferedReader breader;
 	private Empregado emp;
         
 	public Leitor(Empregado emp) throws IOException{
 		this.emp = emp;
-                reader = new FileReader("arq.txt");
+                this.fReader = new FileReader("arq.txt");
 	}
 	
 	public double getFaturaTotal() throws IOException{
@@ -21,8 +24,8 @@ public class Leitor {
 		double aux;
 		String linha = null;
 		
-		this.reader = new FileReader("arq.txt");
-		this.breader = new BufferedReader(reader);
+		this.fReader = new FileReader("arq.txt");
+		this.breader = new BufferedReader(fReader);
 		
 		while((linha = breader.readLine())!=null){
 			aux = Double.parseDouble(linha.split(",")[1]); //Adiciona o campo 0 do split a lista			
@@ -38,8 +41,8 @@ public class Leitor {
 		String linha = null;
 		int i=0;
 		
-		this.reader = new FileReader("arq.txt");
-		this.breader = new BufferedReader(reader);
+		this.fReader = new FileReader("arq.txt");
+		this.breader = new BufferedReader(fReader);
 
 		
 		while((linha = breader.readLine())!=null){
@@ -53,6 +56,6 @@ public class Leitor {
 	
 	public void close() throws IOException{
 		this.breader.close();
-		this.reader.close();
+		this.fReader.close();
 	}
 }

@@ -11,8 +11,8 @@ public class Ensino extends Empregado{
     
     private String formacao;
     
-    public Ensino(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem, String formacao){
-        super(nome, salario, cpf, dataAdm, dataDem);
+    public Ensino(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String formacao){
+        super(nome, salario, cpf, dataAdm, email);
         this.formacao = formacao;
         
     }

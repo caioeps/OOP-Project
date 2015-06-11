@@ -3,15 +3,15 @@ package poo.tipo;
 import java.util.ArrayList;
 
 import poo.exceptions.*;
-import interfaces.InterfaceEmpregado;
+import poo.interfaces.InterfaceEmpregado;
 
 
-public class Engenheiro extends Empregado implements InterfaceEmpregado{
+public class Engenheiro extends Empregado{
 	
 	private String eng;
 
-	public Engenheiro(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem, String eng) {
-		super(nome, salario, cpf, dataAdm, dataDem);
+	public Engenheiro(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String eng) {
+		super(nome, salario, cpf, dataAdm, email);
 		
 		this.eng = eng;
 	}
@@ -23,8 +23,5 @@ public class Engenheiro extends Empregado implements InterfaceEmpregado{
 	public void setEng(String eng) {
 		this.eng = eng;
 	}
-	
-	
-	
 	
 }

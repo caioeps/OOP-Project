@@ -6,8 +6,8 @@ public class SemSuperior extends Empregado{
     
     private String funcao;
     
-    public SemSuperior(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, ArrayList<Integer> dataDem, String funcao){
-        super(nome, salario, cpf, dataAdm, dataDem);
+    public SemSuperior(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String funcao){
+        super(nome, salario, cpf, dataAdm, email);
         
         this.funcao = funcao;
     }
