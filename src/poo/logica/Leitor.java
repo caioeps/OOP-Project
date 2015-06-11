@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import poo.tipo.*;
 
 public class Leitor {
-	private FileReader reader;
+	File file;
+        private FileReader reader;
 	private BufferedReader breader;
 	private Empregado emp;
         
 	public Leitor(Empregado emp) throws IOException{
 		this.emp = emp;
-                reader = new FileReader();
+                reader = new FileReader("arq.txt");
 	}
 	
 	public double getFaturaTotal() throws IOException{
