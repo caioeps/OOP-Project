@@ -28,6 +28,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnLimparCampos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -114,7 +116,10 @@
                   <Component id="fieldAno" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="60" max="32767" attributes="0"/>
-              <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLimparCampos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -258,6 +263,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Funcao"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLimparCampos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpar campos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparCamposActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

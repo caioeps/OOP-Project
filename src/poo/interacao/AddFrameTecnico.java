@@ -146,6 +146,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         fieldAno = new javax.swing.JTextField();
         fieldLicensa = new javax.swing.JTextField();
         labelLicensa = new javax.swing.JLabel();
+        btnLimparCampos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -215,6 +216,13 @@ public class AddFrameTecnico extends javax.swing.JFrame {
 
         labelLicensa.setText("Licensa");
 
+        btnLimparCampos.setText("Limpar campos");
+        btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCamposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -224,6 +232,8 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnLimparCampos)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAdd)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -290,7 +300,9 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                     .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(btnAdd)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnLimparCampos))
                 .addContainerGap())
         );
 
@@ -374,6 +386,15 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldLicensaActionPerformed
 
+    private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
+        this.fieldNome.setText("");
+        this.fieldSalario.setText("");
+        this.fieldCpf.setText("");
+        this.fieldEmail.setText("");
+        this.fieldLicensa.setText("");
+        this.fieldAno.setText("");
+    }//GEN-LAST:event_btnLimparCamposActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,6 +403,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
     private javax.swing.JComboBox boxDia;
     private javax.swing.JComboBox boxMes;
     private javax.swing.JToggleButton btnAdd;
+    private javax.swing.JButton btnLimparCampos;
     private javax.swing.JTextField fieldAno;
     private javax.swing.JTextField fieldCpf;
     private javax.swing.JTextField fieldEmail;
