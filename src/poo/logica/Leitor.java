@@ -31,6 +31,9 @@ public class Leitor {
                 
                 aux = (ArrayList) objIn.readObject();
                 
+                fIn.close();
+                objIn.close();
+                
                 return aux;
                 
             } catch (FileNotFoundException ex) {
