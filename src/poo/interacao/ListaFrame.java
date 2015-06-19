@@ -1,14 +1,19 @@
 package poo.interacao;
 
+import java.io.IOException;
 import poo.tipo.*;
 import poo.interfaces.InterfaceEmpregado;
 
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poo.logica.Escritor;
+import poo.logica.Leitor;
 
 /**
  *
@@ -24,7 +29,8 @@ import poo.logica.Escritor;
     private AddFrameSemSuperior frameSemSuperior;
     private AddFrameTecnico frameTecnico;
     
-    private Escritor writer;
+    private Escritor escritor;
+    private Leitor leitor;
     
     private ArrayList<Empregado> lista;
     
@@ -37,7 +43,7 @@ import poo.logica.Escritor;
      */
     public ListaFrame() {
         initComponents();
-        lista = new ArrayList<>();
+        this.lista = new ArrayList<>();
     }
     
     public void imprimeLista(){
@@ -46,28 +52,57 @@ import poo.logica.Escritor;
             System.out.println(key.getNome() + " | " + key.getCpf() + " | " + key.getEmail());
     }
     
+    public void carregaLista(){
+        try {
+            this.leitor = new Leitor();
+            this.lista = this.leitor.abrir();
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, 
+                    "Erro ao carregar ",
+                    "ERRO I/O",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void salvaLista(){
+        try {
+            this.escritor = new Escritor();
+            escritor.gravar(this.lista);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, 
+                    "Erro ao salvar arquivo",
+                    "ERRO I/O",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     public void passaLista(InterfaceEmpregado eng){
         this.lista.add((Empregado) eng);
     }
     
-    public void atualizaLista(){
+    public void atualizaLista(){ 
         DefaultTableModel dtm = (DefaultTableModel) table.getModel();
- 
-        dtm.setRowCount(0);
         
-        for(Empregado key : this.lista){
-            
+
+
+        dtm.setRowCount(0);
+
+        for(Empregado key : this.lista){              
+
             Vector row = new Vector();
-             
+
             this.table.setRowSelectionAllowed(true);
             row.add(key.getNome());
             row.add(key.getSalario());
             row.add(key.getCpf());
             row.add(key.getEmail());
-            
-                       
-            dtm.addRow(row);            
-        }              
+
+
+            dtm.addRow(row);
+        }
+        
+        this.salvaLista();
+
     }
        
 
@@ -268,6 +303,7 @@ import poo.logica.Escritor;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ListaFrame().setVisible(true);
+                
             }
         });
     }

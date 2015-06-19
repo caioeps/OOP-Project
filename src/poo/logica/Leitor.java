@@ -18,14 +18,14 @@ public class Leitor {
 	private BufferedReader breader;
 	private Empregado emp;
         
-	public Leitor(Empregado emp) throws IOException{
-		this.emp = emp;
-                this.fReader = new FileReader("arq.txt");
+	public Leitor() throws IOException{
+            
 	}
         
         public ArrayList<Empregado> abrir(){
+            ArrayList<Empregado> aux = null;
             try {
-                ArrayList<Empregado> aux;
+                
                 this.fIn = new FileInputStream("data.dat");
                 this.objIn = new ObjectInputStream(fIn); 
                 
@@ -40,6 +40,8 @@ public class Leitor {
             } catch (ClassNotFoundException ex) {
                 ex.getMessage();
             }
+            
+            return aux;
         }
 	
 	public double getFaturaTotal() throws IOException{

@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  *
  * @author Caio
  */
-public class Escritor {
+public class Escritor implements java.io.Serializable {
     private ArrayList<Empregado> lista;
     private FileWriter fw;
     File file;
@@ -63,16 +63,16 @@ public class Escritor {
     
     public void gravar(ArrayList<Empregado> list){
         try {
-            fOut = new FileOutputStream("data.dat"); 
-            objOut = new ObjectOutputStream(fOut);
+            this.fOut = new FileOutputStream("data.dat"); 
+            this.objOut = new ObjectOutputStream(fOut);
             
-            objOut.writeObject(list);
+            this.objOut.writeObject(list);
             
-            objOut.flush();
-            objOut.close();
+            //this.objOut.flush();
+            this.objOut.close();
             
-            fOut.flush();
-            fOut.close();
+            //this.fOut.flush();
+            this.fOut.close();
             
         } catch (FileNotFoundException ex) {
             ex.getMessage();

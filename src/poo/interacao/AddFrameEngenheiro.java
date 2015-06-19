@@ -5,11 +5,13 @@
  */
 package poo.interacao;
 
+import java.io.IOException;
 import poo.tipo.*;
 import poo.exceptions.*;
 
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -329,7 +331,7 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
         String nome=null, email=null, cpf=null, area=null; //Apenas inicializando para posterior checagem
         Double salario=null;
         ArrayList<Integer> data = new ArrayList<>();
-        Engenheiro aux;
+        Engenheiro aux=null;
         
         if(!this.fieldNome.getText().isEmpty()) 
             nome = this.fieldNome.getText();
@@ -364,18 +366,23 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
         data.add(Integer.parseInt(this.fieldAno.getText())); //Pega o campo ano e transforma p/ int
         data.add((this.boxMes.getSelectedIndex() + 1)); // Número do mês
         data.add((this.boxDia.getSelectedIndex() +1)); //Número do dia
-                       
-        aux = new Engenheiro(nome, salario, cpf, data, email, area);
-                       
         
-        
-        if((email==null) || (nome==null) || (cpf==null) || (area==null) || (salario==null)) {
-           //faz nada
-        }else{
+        try{
+            aux = new Engenheiro(nome, salario, cpf, data, email, area);
+            
             listaFrame.passaLista(aux);
             this.listaFrame.atualizaLista();
             this.dispose();
+        } catch (SalarioException ex) {
+            JOptionPane.showMessageDialog(null, 
+                    ex.getMessage(),
+                    "ERRO",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
+                       
+        
+        
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed
