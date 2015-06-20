@@ -1,5 +1,6 @@
 package poo.interacao;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import poo.tipo.*;
 import poo.interfaces.InterfaceEmpregado;
@@ -56,9 +57,15 @@ import poo.logica.Leitor;
         try {
             this.leitor = new Leitor();
             this.lista = this.leitor.abrir();
+            
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, 
-                    "Erro ao carregar ",
+                    "Erro ao carregar lista.",
+                    "ERRO I/O",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, 
+                    "Erro ao carregar - Classe nao encontrada.",
                     "ERRO I/O",
                     JOptionPane.INFORMATION_MESSAGE);
         }
@@ -68,9 +75,15 @@ import poo.logica.Leitor;
         try {
             this.escritor = new Escritor();
             escritor.gravar(this.lista);
+            
+        } catch (FileNotFoundException ex){
+            JOptionPane.showMessageDialog(null, 
+                    "Arquivos corrompidos.  FILE_NOT_FOUND",
+                    "ERRO I/O",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, 
-                    "Erro ao salvar arquivo",
+                    "Erro ao salvar lista.",
                     "ERRO I/O",
                     JOptionPane.INFORMATION_MESSAGE);
         }
@@ -115,6 +128,7 @@ import poo.logica.Leitor;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -317,6 +331,7 @@ import poo.logica.Leitor;
     private javax.swing.JMenuItem itemTecnico;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuFile;
     private javax.swing.JTable table;

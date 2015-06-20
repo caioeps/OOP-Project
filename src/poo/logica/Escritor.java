@@ -26,59 +26,47 @@ import java.util.logging.Logger;
  * @author Caio
  */
 public class Escritor implements java.io.Serializable {
-    private ArrayList<Empregado> lista;
-    private FileWriter fw;
-    File file;
-    FileOutputStream fOut;
-    ObjectOutputStream objOut;
+    
+    
+    
 
     
     public Escritor() throws IOException{
-        this.lista = new ArrayList<>();
+        super();
     }
-    
-    public void addLista(Empregado e){
-        this.lista.add(e);
-    }
-    
-    public void escreveArq() throws IOException{
+        
+    public void escreveRelatorio() throws IOException{
         int i = 1;
         boolean b;
         
         while(true){
-            if (b=new File("arq"+Integer.toString(i)+".txt").exists()){
+            if (b=new File("Relatorio_"+Integer.toString(i)+".txt").exists()){
                 i++;
             }else{
-                this.file = new File("Relatorio_"+Integer.toString(i)+".txt");
-                this.fw = new FileWriter(this.file);
+                File file = new File("Relatorio_"+Integer.toString(i)+".txt");
+                FileWriter fw = new FileWriter(file);
 
-                this.fw.write("string ");
-                this.fw.write("string ");
-                this.fw.close();
+                fw.write("string ");
+                fw.write("string ");
+                fw.close();
 
                 break;           
             }            
         } 
     }
     
-    public void gravar(ArrayList<Empregado> list){
-        try {
-            this.fOut = new FileOutputStream("data.dat"); 
-            this.objOut = new ObjectOutputStream(fOut);
-            
-            this.objOut.writeObject(list);
-            
-            //this.objOut.flush();
-            this.objOut.close();
-            
-            //this.fOut.flush();
-            this.fOut.close();
-            
-        } catch (FileNotFoundException ex) {
-            ex.getMessage();
-        }catch (IOException ex) {
-            ex.getMessage();
-        }
+    public void gravar(ArrayList<Empregado> list) throws FileNotFoundException, IOException{
+       File file = new File("data.bin");
+         
+       FileOutputStream fOut = new FileOutputStream(file); 
+       ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+
+       objOut.writeObject(list);
+
+       objOut.flush();
+       objOut.close();
+       fOut.flush();
+       fOut.close();
     }
     
     
