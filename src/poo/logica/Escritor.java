@@ -55,19 +55,7 @@ public class Escritor implements java.io.Serializable {
         } 
     }
     
-    public void gravar(ArrayList<Empregado> list) throws FileNotFoundException, IOException{
-       File file = new File("data.bin");
-         
-       FileOutputStream fOut = new FileOutputStream(file); 
-       ObjectOutputStream objOut = new ObjectOutputStream(fOut);
-
-       objOut.writeObject(list);
-
-       objOut.flush();
-       objOut.close();
-       fOut.flush();
-       fOut.close();
-    }
+    
     
     
 

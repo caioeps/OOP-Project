@@ -16,21 +16,6 @@ public class Leitor {
             
 	}
         
-        
-        public ArrayList<Empregado> abrir() throws IOException, ClassNotFoundException{
-            ArrayList<Empregado> aux = null;
-
-            FileInputStream fIn = new FileInputStream(new File("data.bin"));
-            ObjectInputStream objIn = new ObjectInputStream(fIn); 
-
-            aux = (ArrayList) objIn.readObject();
-
-            //fIn.close();
-            //objIn.close();
-
-            return aux;
-        }
-	
 	public double getFaturaTotal() throws FileNotFoundException, IOException{
 		double total = 0;
 		double aux;

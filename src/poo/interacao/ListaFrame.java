@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poo.logica.Escritor;
 import poo.logica.Leitor;
+import poo.logica.Serializador;
 
 /**
  *
@@ -29,10 +30,7 @@ import poo.logica.Leitor;
     private AddFrameRH frameRh;
     private AddFrameSemSuperior frameSemSuperior;
     private AddFrameTecnico frameTecnico;
-    
-    private Escritor escritor;
-    private Leitor leitor;
-    
+        
     private ArrayList<Empregado> lista;
     
     
@@ -54,9 +52,10 @@ import poo.logica.Leitor;
     }
     
     public void carregaLista(){
+        Serializador ser = new Serializador();
+        
         try {
-            this.leitor = new Leitor();
-            this.lista = this.leitor.abrir();
+            this.lista = (ArrayList) ser.abre();
             
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, 
@@ -72,9 +71,9 @@ import poo.logica.Leitor;
     }
     
     public void salvaLista(){
+        Serializador ser = new Serializador();
         try {
-            this.escritor = new Escritor();
-            escritor.gravar(this.lista);
+            ser.grava(this.lista);
             
         } catch (FileNotFoundException ex){
             JOptionPane.showMessageDialog(null, 
