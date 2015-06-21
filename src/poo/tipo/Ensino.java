@@ -9,7 +9,11 @@ import java.util.ArrayList;
 
 public class Ensino extends Empregado{
     
-    private String formacao;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4286903579061355261L;
+	private String formacao;
     
     public Ensino(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String formacao){
         super(nome, salario, cpf, dataAdm, email);

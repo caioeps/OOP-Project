@@ -47,12 +47,12 @@ public class Serializador {
         ObjectInputStream ois;
         Object arq = null;
         
-        if(!new File("data.bin").exists()){
-        	file = new File("data.bin");
-        	fis = new FileInputStream(file);
+        if(new File("data.bin").exists()){
+            file = new File("data.bin");
+            fis = new FileInputStream(file);
             ois = new ObjectInputStream(fis);
 
-            arq = ((ArrayList<Empregado>) ois.readObject());
+            arq =  ois.readObject();
             
             ois.close();
             

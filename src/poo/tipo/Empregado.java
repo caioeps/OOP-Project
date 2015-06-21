@@ -11,7 +11,11 @@ import poo.exceptions.*;
 
 public abstract class Empregado implements InterfaceEmpregado, Comparable<Empregado>, Serializable{
 
-    protected String nome;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5455368181178230766L;
+	protected String nome;
     protected double salario;
     protected String cpf;
     protected boolean isAtivo;
@@ -20,8 +24,6 @@ public abstract class Empregado implements InterfaceEmpregado, Comparable<Empreg
     protected ArrayList<String> notes;
     private String email;
     protected static double SAL_MIN = 780.0;
-    private Object gender;
-
 
 
     public Empregado(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email) {

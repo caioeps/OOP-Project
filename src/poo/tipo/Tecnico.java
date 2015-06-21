@@ -5,7 +5,11 @@ import java.util.ArrayList;
 
 public class Tecnico extends Empregado{
     
-        private String licensa;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4782277585705818916L;
+		private String licensa;
 
 	public Tecnico(String nome, double salario, String cpf,	ArrayList<Integer> dataAdm, String email, String licensa) {
             super(nome, salario, cpf, dataAdm, email);

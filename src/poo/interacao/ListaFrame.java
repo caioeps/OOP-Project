@@ -8,8 +8,6 @@ import poo.interfaces.InterfaceEmpregado;
 
 import java.util.ArrayList;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -18,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import poo.logica.Escritor;
 import poo.logica.Leitor;
+import poo.logica.Lista;
 import poo.logica.Serializador;
 import poo.logica.TableMouseListener;
 
@@ -34,8 +33,9 @@ import poo.logica.TableMouseListener;
     private AddFrameRH frameRh;
     private AddFrameSemSuperior frameSemSuperior;
     private AddFrameTecnico frameTecnico;
-        
+    private AddNotes addNotes;
     private ArrayList<Empregado> lista;
+    private Lista listaHandler;
     
     
     
@@ -51,13 +51,17 @@ import poo.logica.TableMouseListener;
         try {
                 if(new Serializador().abre() != null)
                     carregaLista();
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, 
-                    e.getMessage(),
-                    "ERRO",
-                    JOptionPane.INFORMATION_MESSAGE);
-		}
+		} catch (ClassNotFoundException e) {
+                    JOptionPane.showMessageDialog(null, 
+                        e.getMessage(),
+                        "ERRO",
+                        JOptionPane.INFORMATION_MESSAGE);
+		} catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, 
+                        e.getMessage(),
+                        "ERRO",
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
         	
     }
     
@@ -143,7 +147,6 @@ import poo.logica.TableMouseListener;
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
@@ -181,10 +184,15 @@ import poo.logica.TableMouseListener;
         jPopupMenu1.add(menuEditar);
 
         menuAddAnotacao.setText("Adicionar anotacao");
+        menuAddAnotacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAddAnotacaoActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(menuAddAnotacao);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                
+
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -289,8 +297,6 @@ import poo.logica.TableMouseListener;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
         );
-        
-        table.addMouseListener(new TableMouseListener(table));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -351,6 +357,17 @@ import poo.logica.TableMouseListener;
             
         
     }//GEN-LAST:event_tableMouseReleased
+
+    private void menuAddAnotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnotacaoActionPerformed
+        Empregado emp;
+        int index = this.table.getSelectedRow();
+        
+        emp = this.lista.get(index);
+        
+        this.addNotes = new AddNotes(emp);
+        addNotes.setVisible(true);
+        addNotes.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_menuAddAnotacaoActionPerformed
 
     /**
      * @param args the command line arguments
