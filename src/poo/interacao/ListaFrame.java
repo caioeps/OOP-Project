@@ -7,6 +7,7 @@ import poo.tipo.*;
 import poo.interfaces.InterfaceEmpregado;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -37,8 +38,7 @@ import poo.logica.TableMouseListener;
     private ArrayList<Empregado> lista;
     private Lista listaHandler;
     
-    
-    
+        
     //FIM das minhas variáveis
     
     /**
@@ -65,10 +65,8 @@ import poo.logica.TableMouseListener;
         	
     }
     
-    public void imprimeLista(){
-        System.out.println("LISTA-------------");
-        for(Empregado key : this.lista)
-            System.out.println(key.getNome() + " | " + key.getCpf() + " | " + key.getEmail());
+    public ArrayList<Empregado> getLista(){
+    	return this.lista;
     }
     
     public void carregaLista(){
@@ -156,14 +154,18 @@ import poo.logica.TableMouseListener;
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuFile = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        menuAdicionar = new javax.swing.JMenu();
         itemEngenheiro = new javax.swing.JMenuItem();
         itemEnsino = new javax.swing.JMenuItem();
         itemLegal = new javax.swing.JMenuItem();
         itemRh = new javax.swing.JMenuItem();
         itemTecnico = new javax.swing.JMenuItem();
         itemSemSuperior = new javax.swing.JMenuItem();
+        menuOrdenar = new javax.swing.JMenu();
+        itemOrdenarNomeCresc = new javax.swing.JMenuItem();
+        itemOrdenarNomeDecresc = new javax.swing.JMenuItem();
+        itemOrdenarSalarioCresc = new javax.swing.JMenuItem();
+        itemOrdenarSalarioDecresc = new javax.swing.JMenuItem();
 
         jPopupMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -224,14 +226,12 @@ import poo.logica.TableMouseListener;
         table.setComponentPopupMenu (this.jPopupMenu1);
         jScrollPane1.setViewportView(table);
 
-        menuFile.setText("File");
-        menuFile.addActionListener(new java.awt.event.ActionListener() {
+        menuAdicionar.setText("Adicionar");
+        menuAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuFileActionPerformed(evt);
+                menuAdicionarActionPerformed(evt);
             }
         });
-
-        jMenu1.setText("Add");
 
         itemEngenheiro.setText("Engenheiro");
         itemEngenheiro.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +239,7 @@ import poo.logica.TableMouseListener;
                 itemEngenheiroActionPerformed(evt);
             }
         });
-        jMenu1.add(itemEngenheiro);
+        menuAdicionar.add(itemEngenheiro);
 
         itemEnsino.setText("Ensino");
         itemEnsino.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +247,7 @@ import poo.logica.TableMouseListener;
                 itemEnsinoActionPerformed(evt);
             }
         });
-        jMenu1.add(itemEnsino);
+        menuAdicionar.add(itemEnsino);
 
         itemLegal.setText("Setor legal");
         itemLegal.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +255,7 @@ import poo.logica.TableMouseListener;
                 itemLegalActionPerformed(evt);
             }
         });
-        jMenu1.add(itemLegal);
+        menuAdicionar.add(itemLegal);
 
         itemRh.setText("Recursos Humanos");
         itemRh.addActionListener(new java.awt.event.ActionListener() {
@@ -263,7 +263,7 @@ import poo.logica.TableMouseListener;
                 itemRhActionPerformed(evt);
             }
         });
-        jMenu1.add(itemRh);
+        menuAdicionar.add(itemRh);
 
         itemTecnico.setText("Tecnico");
         itemTecnico.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +271,7 @@ import poo.logica.TableMouseListener;
                 itemTecnicoActionPerformed(evt);
             }
         });
-        jMenu1.add(itemTecnico);
+        menuAdicionar.add(itemTecnico);
 
         itemSemSuperior.setText("Sem superior");
         itemSemSuperior.addActionListener(new java.awt.event.ActionListener() {
@@ -279,11 +279,45 @@ import poo.logica.TableMouseListener;
                 itemSemSuperiorActionPerformed(evt);
             }
         });
-        jMenu1.add(itemSemSuperior);
+        menuAdicionar.add(itemSemSuperior);
 
-        menuFile.add(jMenu1);
+        jMenuBar1.add(menuAdicionar);
 
-        jMenuBar1.add(menuFile);
+        menuOrdenar.setText("Ordenar por");
+
+        itemOrdenarNomeCresc.setText("nome crescente");
+        itemOrdenarNomeCresc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemOrdenarNomeCrescActionPerformed(evt);
+            }
+        });
+        menuOrdenar.add(itemOrdenarNomeCresc);
+
+        itemOrdenarNomeDecresc.setText("nome descrescente");
+        itemOrdenarNomeDecresc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemOrdenarNomeDecrescActionPerformed(evt);
+            }
+        });
+        menuOrdenar.add(itemOrdenarNomeDecresc);
+
+        itemOrdenarSalarioCresc.setText("salario crescente");
+        itemOrdenarSalarioCresc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemOrdenarSalarioCrescActionPerformed(evt);
+            }
+        });
+        menuOrdenar.add(itemOrdenarSalarioCresc);
+
+        itemOrdenarSalarioDecresc.setText("salario decrescente");
+        itemOrdenarSalarioDecresc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemOrdenarSalarioDecrescActionPerformed(evt);
+            }
+        });
+        menuOrdenar.add(itemOrdenarSalarioDecresc);
+
+        jMenuBar1.add(menuOrdenar);
 
         setJMenuBar(jMenuBar1);
 
@@ -301,42 +335,48 @@ import poo.logica.TableMouseListener;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileActionPerformed
+    private void menuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdicionarActionPerformed
         // TODO add your handling code here:        
-    }//GEN-LAST:event_menuFileActionPerformed
+    }//GEN-LAST:event_menuAdicionarActionPerformed
 
     private void itemEngenheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEngenheiroActionPerformed
-        frameEngenheiro = new AddFrameEngenheiro(this);
+    	//TODO
+    	frameEngenheiro = new AddFrameEngenheiro(this);
         frameEngenheiro.setVisible(true);
         frameEngenheiro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemEngenheiroActionPerformed
 
     private void itemEnsinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnsinoActionPerformed
-        frameEnsino = new AddFrameEnsino(this);
+    	//TODO
+    	frameEnsino = new AddFrameEnsino(this);
         frameEnsino.setVisible(true);
         frameEnsino.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemEnsinoActionPerformed
 
     private void itemLegalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLegalActionPerformed
-        frameLegal = new AddFrameLegal(this);
+        //TODO
+    	frameLegal = new AddFrameLegal(this);
         frameLegal.setVisible(true);
         frameLegal.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemLegalActionPerformed
 
     private void itemRhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRhActionPerformed
-        frameRh = new AddFrameRH(this);
+        //TODO
+    	frameRh = new AddFrameRH(this);
         frameRh.setVisible(true);
         frameRh.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemRhActionPerformed
 
     private void itemTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTecnicoActionPerformed
-        frameTecnico = new AddFrameTecnico(this);
+        //TODO
+    	frameTecnico = new AddFrameTecnico(this);
         frameTecnico.setVisible(true);
         frameTecnico.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemTecnicoActionPerformed
 
     private void itemSemSuperiorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSemSuperiorActionPerformed
-        frameSemSuperior = new AddFrameSemSuperior(this);
+        //TODO
+    	frameSemSuperior = new AddFrameSemSuperior(this);
         frameSemSuperior.setVisible(true);
         frameSemSuperior.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemSemSuperiorActionPerformed
@@ -351,7 +391,8 @@ import poo.logica.TableMouseListener;
     }//GEN-LAST:event_menuVerPerfilActionPerformed
 
     private void tableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseReleased
-        if(evt.isPopupTrigger()){
+        //TODO
+    	if(evt.isPopupTrigger()){
             this.jPopupMenu1.show(this, evt.getX(), evt.getY());
         }
             
@@ -359,15 +400,40 @@ import poo.logica.TableMouseListener;
     }//GEN-LAST:event_tableMouseReleased
 
     private void menuAddAnotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnotacaoActionPerformed
-        Empregado emp;
+        //TODO
+    	Empregado emp;
         int index = this.table.getSelectedRow();
                 
         emp = this.lista.get(index);
         
-        this.addNotes = new AddNotes(emp);
+        this.addNotes = new AddNotes(this, emp);
         addNotes.setVisible(true);
         addNotes.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuAddAnotacaoActionPerformed
+
+    private void itemOrdenarNomeCrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemOrdenarNomeCrescActionPerformed
+        //TODO
+    	Collections.sort(this.lista, Empregado.getComparatorNomeCresc());
+        this.atualizaLista();
+    }//GEN-LAST:event_itemOrdenarNomeCrescActionPerformed
+
+    private void itemOrdenarSalarioCrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemOrdenarSalarioCrescActionPerformed
+    	//TODO
+    	Collections.sort(this.lista, Empregado.getComparatorSalarioCresc());
+        this.atualizaLista();
+    }//GEN-LAST:event_itemOrdenarSalarioCrescActionPerformed
+
+    private void itemOrdenarNomeDecrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemOrdenarNomeDecrescActionPerformed
+        // TODO
+    	Collections.sort(this.lista, Empregado.getComparatorNomeDecresc());
+        this.atualizaLista();
+    }//GEN-LAST:event_itemOrdenarNomeDecrescActionPerformed
+
+    private void itemOrdenarSalarioDecrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemOrdenarSalarioDecrescActionPerformed
+        // TODO
+    	Collections.sort(this.lista, Empregado.getComparatorSalariodecresc());
+        this.atualizaLista();
+    }//GEN-LAST:event_itemOrdenarSalarioDecrescActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,16 +476,20 @@ import poo.logica.TableMouseListener;
     private javax.swing.JMenuItem itemEngenheiro;
     private javax.swing.JMenuItem itemEnsino;
     private javax.swing.JMenuItem itemLegal;
+    private javax.swing.JMenuItem itemOrdenarNomeCresc;
+    private javax.swing.JMenuItem itemOrdenarNomeDecresc;
+    private javax.swing.JMenuItem itemOrdenarSalarioCresc;
+    private javax.swing.JMenuItem itemOrdenarSalarioDecresc;
     private javax.swing.JMenuItem itemRh;
     private javax.swing.JMenuItem itemSemSuperior;
     private javax.swing.JMenuItem itemTecnico;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menuAddAnotacao;
+    private javax.swing.JMenu menuAdicionar;
     private javax.swing.JMenuItem menuEditar;
-    private javax.swing.JMenu menuFile;
+    private javax.swing.JMenu menuOrdenar;
     private javax.swing.JMenuItem menuVerPerfil;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

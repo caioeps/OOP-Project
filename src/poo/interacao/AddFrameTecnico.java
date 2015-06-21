@@ -374,10 +374,6 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                     "ERRO",
                     JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-        
-        this.listaFrame.imprimeLista();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed

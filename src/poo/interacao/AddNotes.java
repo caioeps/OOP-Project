@@ -22,11 +22,13 @@ public class AddNotes extends javax.swing.JFrame {
      */
 	//Minhas variaveis
 	Empregado emp;
+	ListaFrame frame;
 		
 	//FIM
 	
-    public AddNotes(Empregado emp) {
+    public AddNotes(ListaFrame frame, Empregado emp) {
         initComponents();
+        this.frame = frame;
         this.emp = emp;
                 
     }
@@ -108,6 +110,7 @@ public class AddNotes extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         this.emp.addNotes(this.fieldTexto.getText().trim());
+        this.frame.atualizaLista();
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
