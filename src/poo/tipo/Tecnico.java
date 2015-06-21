@@ -19,5 +19,11 @@ public class Tecnico extends Empregado{
     public void setLicensa(String licensa) {
         this.licensa = licensa;
     }
+
+    @Override
+    public int compareTo(Empregado pi)
+    {
+        return (pi.getNome()).compareTo(pi.getNome());
+    }
 	
 }

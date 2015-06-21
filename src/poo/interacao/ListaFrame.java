@@ -2,6 +2,7 @@ package poo.interacao;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import poo.tipo.*;
 import poo.interfaces.InterfaceEmpregado;
 
@@ -9,13 +10,16 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 import poo.logica.Escritor;
 import poo.logica.Leitor;
 import poo.logica.Serializador;
+import poo.logica.TableMouseListener;
 
 /**
  *
@@ -43,6 +47,18 @@ import poo.logica.Serializador;
     public ListaFrame() {
         initComponents();
         this.lista = new ArrayList<>();
+        
+        try {
+                if(new Serializador().abre() != null)
+                    carregaLista();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, 
+                    e.getMessage(),
+                    "ERRO",
+                    JOptionPane.INFORMATION_MESSAGE);
+		}
+        	
     }
     
     public void imprimeLista(){
@@ -68,6 +84,8 @@ import poo.logica.Serializador;
                     "ERRO I/O",
                     JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        atualizaLista();
     }
     
     public void salvaLista(){
@@ -125,9 +143,13 @@ import poo.logica.Serializador;
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        menuVerPerfil = new javax.swing.JMenuItem();
+        menuEditar = new javax.swing.JMenuItem();
+        menuAddAnotacao = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -140,8 +162,29 @@ import poo.logica.Serializador;
         itemTecnico = new javax.swing.JMenuItem();
         itemSemSuperior = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPopupMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPopupMenu1MouseReleased(evt);
+            }
+        });
 
+        menuVerPerfil.setText("Ver perfil");
+        menuVerPerfil.setToolTipText("");
+        menuVerPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerPerfilActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(menuVerPerfil);
+
+        menuEditar.setText("Editar");
+        jPopupMenu1.add(menuEditar);
+
+        menuAddAnotacao.setText("Adicionar anotacao");
+        jPopupMenu1.add(menuAddAnotacao);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -165,6 +208,12 @@ import poo.logica.Serializador;
                 return canEdit [columnIndex];
             }
         });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tableMouseReleased(evt);
+            }
+        });
+        table.setComponentPopupMenu (this.jPopupMenu1);
         jScrollPane1.setViewportView(table);
 
         menuFile.setText("File");
@@ -234,12 +283,14 @@ import poo.logica.Serializador;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
         );
+        
+        table.addMouseListener(new TableMouseListener(table));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -283,6 +334,23 @@ import poo.logica.Serializador;
         frameSemSuperior.setVisible(true);
         frameSemSuperior.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_itemSemSuperiorActionPerformed
+
+    private void jPopupMenu1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPopupMenu1MouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jPopupMenu1MouseReleased
+
+    private void menuVerPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuVerPerfilActionPerformed
+
+    private void tableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseReleased
+        if(evt.isPopupTrigger()){
+            this.jPopupMenu1.show(this, evt.getX(), evt.getY());
+        }
+            
+        
+    }//GEN-LAST:event_tableMouseReleased
 
     /**
      * @param args the command line arguments
@@ -332,7 +400,10 @@ import poo.logica.Serializador;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem menuAddAnotacao;
+    private javax.swing.JMenuItem menuEditar;
     private javax.swing.JMenu menuFile;
+    private javax.swing.JMenuItem menuVerPerfil;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

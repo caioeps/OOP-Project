@@ -8,20 +8,28 @@ import poo.interfaces.InterfaceEmpregado;
 
 public class Engenheiro extends Empregado{
 	
-	private String eng;
+    private String eng;
 
-	public Engenheiro(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String eng) {
-		super(nome, salario, cpf, dataAdm, email);
-		
-		this.eng = eng;
-	}
+    public Engenheiro(String nome, double salario, String cpf, ArrayList<Integer> dataAdm, String email, String eng) {
+            super(nome, salario, cpf, dataAdm, email);
 
-	public String getEng() {
-		return eng;
-	}
+            this.eng = eng;
+    }
 
-	public void setEng(String eng) {
-		this.eng = eng;
-	}
+    public String getEng() {
+            return eng;
+    }
+
+    public void setEng(String eng) {
+            this.eng = eng;
+    }
+
+    @Override
+    public int compareTo(Empregado pi)
+    {
+        return (pi.getNome()).compareTo(pi.getNome());
+    }
+        
+        
 	
 }

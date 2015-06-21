@@ -5,6 +5,7 @@
  */
 package poo.logica;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import poo.tipo.Empregado;
 
 /**
  *
@@ -23,7 +26,7 @@ public class Serializador {
         
     }
     
-    public void grava(ArrayList list) throws FileNotFoundException, IOException{
+    public void grava(ArrayList<Empregado> list) throws FileNotFoundException, IOException{
         FileOutputStream fos;
         ObjectOutputStream oos;
 
@@ -31,24 +34,33 @@ public class Serializador {
         fos = new FileOutputStream("data.bin");
         oos = new ObjectOutputStream(fos);
 
-        oos.writeObject(list);
+        oos.writeObject(((ArrayList<Empregado>)list));
+        
+        oos.close();
      
         
     }
     
     public Object abre() throws FileNotFoundException, IOException, ClassNotFoundException{
-        FileInputStream fis;
+        File file;
+    	FileInputStream fis;
         ObjectInputStream ois;
         Object arq = null;
         
-  
-        fis = new FileInputStream("data.bin");
-        ois = new ObjectInputStream(fis);
+        if(!new File("data.bin").exists()){
+        	file = new File("data.bin");
+        	fis = new FileInputStream(file);
+            ois = new ObjectInputStream(fis);
 
-        arq =  ois.readObject();
-
+            arq = ((ArrayList<Empregado>) ois.readObject());
+            
+            ois.close();
+            
+            return arq;
+        } else {
+        	return null;
+        }
         
-        return arq;
     }
     
     

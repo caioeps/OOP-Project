@@ -24,4 +24,10 @@ public class Ensino extends Empregado{
     public void setFormacao(String formacao) {
         this.formacao = formacao;
     }
+
+    @Override
+    public int compareTo(Empregado pi)
+    {
+        return (pi.getNome()).compareTo(pi.getNome());
+    }
 }

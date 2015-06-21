@@ -2,12 +2,14 @@ package poo.tipo;
 
 import poo.interfaces.InterfaceEmpregado;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import poo.exceptions.*;
 
 
-public abstract class Empregado implements InterfaceEmpregado{
+public abstract class Empregado implements InterfaceEmpregado, Comparable<Empregado>, Serializable{
 
     protected String nome;
     protected double salario;
@@ -18,6 +20,7 @@ public abstract class Empregado implements InterfaceEmpregado{
     protected ArrayList<String> notes;
     private String email;
     protected static double SAL_MIN = 780.0;
+    private Object gender;
 
 
 
@@ -39,11 +42,11 @@ public abstract class Empregado implements InterfaceEmpregado{
 
     public void setSalario(double salario) {
             if (salario < 0.0)
-                    throw new SalarioException("Erro: valor de salario invalido.");
+                throw new SalarioException("Erro: valor de salario invalido.");
             else if(salario < SAL_MIN)
-                    throw new SalarioException("Inserir salario maior ou igual ao salario minimo.");
+                throw new SalarioException("Inserir salario maior ou igual ao salario minimo.");
             else
-                    this.salario = salario;
+                this.salario = salario;
     }
 
     public String getNome() {
@@ -222,5 +225,57 @@ public abstract class Empregado implements InterfaceEmpregado{
         }
         
         return r;
+    } 
+    
+    // COMPARADORES   
+      
+    public static Comparator<Empregado> getComparatorNomeCresc() {  
+        return new Comparator<Empregado>() {  
+            @Override  
+            public int compare(Empregado e1, Empregado e2) {  
+                return e1.getNome().toUpperCase().compareTo(e2.getNome().toUpperCase());  //Ordena por nome crescente
+            }  
+        };  
+    } 
+    
+    public static Comparator<Empregado> getComparatorNomeDecresc() {  
+        return new Comparator<Empregado>() {  
+            @Override  
+            public int compare(Empregado e1, Empregado e2) {  
+                return e1.getNome().toUpperCase().compareTo(e2.getNome().toUpperCase()) * (-1);  //Invertemos aqui a comparação, tornando-a, assim, descrescente.
+            }  
+        };  
+    } 
+    
+    public static Comparator<Empregado> getComparatorSalarioCresc() {  
+        return new Comparator<Empregado>() {  
+            @Override  
+            public int compare(Empregado e1, Empregado e2) {  
+                if (e1.getSalario() > e2.getSalario())
+                    return 1;
+                if (e1.getSalario() < e2.getSalario())
+                    return -1;
+                else{
+                    return e1.getNome().toUpperCase().compareTo(e2.getNome().toUpperCase()); //Se os salarios são iguais, ordena por nome.
+                }
+                
+            }  
+        };  
+    } 
+    
+        public static Comparator<Empregado> getComparatorSalariodecresc() {  
+        return new Comparator<Empregado>() {  
+            @Override  
+            public int compare(Empregado e1, Empregado e2) {  
+                if (e1.getSalario() > e2.getSalario())
+                    return -1;
+                if (e1.getSalario() < e2.getSalario())
+                    return 1;
+                else{
+                    return e1.getNome().toUpperCase().compareTo(e2.getNome().toUpperCase()); //Se os salarios são iguais, ordena por nome.
+                }
+                
+            }  
+        };  
     } 
 }

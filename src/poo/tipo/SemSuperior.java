@@ -19,6 +19,12 @@ public class SemSuperior extends Empregado{
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
+
+    @Override
+    public int compareTo(Empregado pi)
+    {
+        return (pi.getNome()).compareTo(pi.getNome());
+    }
     
     
 }

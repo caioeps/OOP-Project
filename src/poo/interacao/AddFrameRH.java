@@ -9,7 +9,9 @@ import poo.tipo.*;
 import poo.exceptions.*;
 
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -363,12 +365,22 @@ public class AddFrameRH extends javax.swing.JFrame {
                         
         listaFrame.passaLista(aux);
         
-        if((email==null) || (nome==null) || (cpf==null) || (funcao==null) || (salario==null)) {
-           //faz nada
-        }else{
-            this.listaFrame.atualizaLista();
-            this.dispose();
+        try{
+        	if((email==null) || (nome==null) || (cpf==null) || (funcao==null) || (salario==null)) {
+                //faz nada
+             }else{
+                 this.listaFrame.atualizaLista();
+                 this.dispose();
+             }
+        	
+        } catch (SalarioException ex) {
+            JOptionPane.showMessageDialog(null, 
+                    ex.getMessage(),
+                    "ERRO",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed

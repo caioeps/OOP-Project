@@ -368,11 +368,16 @@ public class AddFrameEngenheiro extends javax.swing.JFrame {
         data.add((this.boxDia.getSelectedIndex() +1)); //Número do dia
         
         try{
-            aux = new Engenheiro(nome, salario, cpf, data, email, area);
-            
-            listaFrame.passaLista(aux);
-            this.listaFrame.atualizaLista();
-            this.dispose();
+            if((email==null) || (nome==null) || (cpf==null) || (area==null) || (salario==null)) {
+                //faz nada
+            }else{
+            	 aux = new Engenheiro(nome, salario, cpf, data, email, area);
+                 
+		         listaFrame.passaLista(aux);
+		         this.listaFrame.atualizaLista();
+		         this.dispose();
+            }
+        	
         } catch (SalarioException ex) {
             JOptionPane.showMessageDialog(null, 
                     ex.getMessage(),

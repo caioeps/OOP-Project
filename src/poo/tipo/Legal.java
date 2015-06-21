@@ -18,6 +18,12 @@ public class Legal extends Empregado{
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
+    @Override
+    public int compareTo(Empregado pi)
+    {
+        return (pi.getNome()).compareTo(pi.getNome());
+    }
     
     
 }

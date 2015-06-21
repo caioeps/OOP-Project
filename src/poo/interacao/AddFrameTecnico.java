@@ -9,7 +9,9 @@ import poo.tipo.*;
 import poo.exceptions.*;
 
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -357,15 +359,23 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                        
         aux = new Tecnico(nome, salario, cpf, data, email, licensa);
                 
-        
-        
-        if((email==null) || (nome==null) || (cpf==null) || (licensa==null) || (salario==null)) {
-           //faz nada
-        }else{
-            listaFrame.passaLista(aux);
-            this.listaFrame.atualizaLista();
-            this.dispose();
+        try{
+        	if((email==null) || (nome==null) || (cpf==null) || (licensa==null) || (salario==null)) {
+                //faz nada
+             }else{
+                 listaFrame.passaLista(aux);
+                 this.listaFrame.atualizaLista();
+                 this.dispose();
+             }
+        	
+        } catch (SalarioException ex) {
+            JOptionPane.showMessageDialog(null, 
+                    ex.getMessage(),
+                    "ERRO",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
+        
+        
         
         this.listaFrame.imprimeLista();
     }//GEN-LAST:event_btnAddActionPerformed
