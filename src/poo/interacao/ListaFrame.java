@@ -361,7 +361,7 @@ import poo.logica.TableMouseListener;
     private void menuAddAnotacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAddAnotacaoActionPerformed
         Empregado emp;
         int index = this.table.getSelectedRow();
-        
+                
         emp = this.lista.get(index);
         
         this.addNotes = new AddNotes(emp);
