@@ -11,7 +11,7 @@ import poo.tipo.Empregado;
  *
  * @author caioe_000
  */
-public class AddNotes extends javax.swing.JFrame {
+public class AddNotesFrame extends javax.swing.JFrame {
 
     /**
 	 * 
@@ -26,7 +26,7 @@ public class AddNotes extends javax.swing.JFrame {
 		
 	//FIM
 	
-    public AddNotes(ListaFrame frame, Empregado emp) {
+    public AddNotesFrame(ListaFrame frame, Empregado emp) {
         initComponents();
         this.frame = frame;
         this.emp = emp;

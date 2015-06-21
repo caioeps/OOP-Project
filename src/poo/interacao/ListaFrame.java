@@ -34,7 +34,10 @@ import poo.logica.TableMouseListener;
     private AddFrameRH frameRh;
     private AddFrameSemSuperior frameSemSuperior;
     private AddFrameTecnico frameTecnico;
-    private AddNotes addNotes;
+    private AddNotesFrame addNotes;
+    private PerfilGeralFrame perfilGeral;
+    // ^^^^ FRAMES
+    
     private ArrayList<Empregado> lista;
     private Lista listaHandler;
     
@@ -151,6 +154,7 @@ import poo.logica.TableMouseListener;
         menuVerPerfil = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenuItem();
         menuAddAnotacao = new javax.swing.JMenuItem();
+        menuExcluir = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -183,6 +187,11 @@ import poo.logica.TableMouseListener;
         jPopupMenu1.add(menuVerPerfil);
 
         menuEditar.setText("Editar");
+        menuEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarActionPerformed(evt);
+            }
+        });
         jPopupMenu1.add(menuEditar);
 
         menuAddAnotacao.setText("Adicionar anotacao");
@@ -192,6 +201,14 @@ import poo.logica.TableMouseListener;
             }
         });
         jPopupMenu1.add(menuAddAnotacao);
+
+        menuExcluir.setText("Excluir");
+        menuExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExcluirActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(menuExcluir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -406,7 +423,7 @@ import poo.logica.TableMouseListener;
                 
         emp = this.lista.get(index);
         
-        this.addNotes = new AddNotes(this, emp);
+        this.addNotes = new AddNotesFrame(this, emp);
         addNotes.setVisible(true);
         addNotes.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuAddAnotacaoActionPerformed
@@ -434,6 +451,37 @@ import poo.logica.TableMouseListener;
     	Collections.sort(this.lista, Empregado.getComparatorSalariodecresc());
         this.atualizaLista();
     }//GEN-LAST:event_itemOrdenarSalarioDecrescActionPerformed
+
+    private void menuExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExcluirActionPerformed
+        // TODO
+    	int index = this.table.getSelectedRow();
+    	this.lista.remove(index);
+    	this.atualizaLista();
+    }//GEN-LAST:event_menuExcluirActionPerformed
+
+    private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
+        // TODO
+        int index = this.table.getSelectedRow();
+                
+        if(this.lista.get(index) instanceof Engenheiro){
+            this.perfilGeral = new PerfilGeralFrame((Engenheiro) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Ensino) {
+            this.perfilGeral = new PerfilGeralFrame((Ensino) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Legal) {
+            this.perfilGeral = new PerfilGeralFrame((Legal) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Rh) {
+            this.perfilGeral = new PerfilGeralFrame((Rh) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof SemSuperior) {
+            this.perfilGeral = new PerfilGeralFrame((SemSuperior) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Tecnico) {
+            this.perfilGeral = new PerfilGeralFrame((Tecnico) this.lista.get(index));
+        }
+        
+        this.perfilGeral.setVisible(true);
+        this.perfilGeral.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        
+    }//GEN-LAST:event_menuEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,6 +537,7 @@ import poo.logica.TableMouseListener;
     private javax.swing.JMenuItem menuAddAnotacao;
     private javax.swing.JMenu menuAdicionar;
     private javax.swing.JMenuItem menuEditar;
+    private javax.swing.JMenuItem menuExcluir;
     private javax.swing.JMenu menuOrdenar;
     private javax.swing.JMenuItem menuVerPerfil;
     private javax.swing.JTable table;
