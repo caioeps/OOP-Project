@@ -41,7 +41,6 @@ public class Lista {
                 //faz nada
 
             return aux;
-
     }
     
     public Empregado buscaCpf(String cpf, ArrayList<Empregado> lista) throws EmpregadoNaoEncontradoException{

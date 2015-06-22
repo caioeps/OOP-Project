@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import poo.logica.Escritor;
-import poo.logica.Leitor;
 import poo.logica.Lista;
 import poo.logica.Serializador;
 import poo.logica.TableMouseListener;
@@ -40,6 +39,7 @@ import poo.logica.TableMouseListener;
     
     private ArrayList<Empregado> lista;
     private Lista listaHandler;
+    private Escritor escritor;
     
         
     //FIM das minhas variÃ¡veis
@@ -170,6 +170,10 @@ import poo.logica.TableMouseListener;
         itemOrdenarNomeDecresc = new javax.swing.JMenuItem();
         itemOrdenarSalarioCresc = new javax.swing.JMenuItem();
         itemOrdenarSalarioDecresc = new javax.swing.JMenuItem();
+        menuGerar = new javax.swing.JMenu();
+        itemRelatorio = new javax.swing.JMenuItem();
+        menuAjuda = new javax.swing.JMenu();
+        itemSobre = new javax.swing.JMenuItem();
 
         jPopupMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -336,6 +340,30 @@ import poo.logica.TableMouseListener;
 
         jMenuBar1.add(menuOrdenar);
 
+        menuGerar.setText("Gerar");
+
+        itemRelatorio.setText("Relatório");
+        itemRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemRelatorioActionPerformed(evt);
+            }
+        });
+        menuGerar.add(itemRelatorio);
+
+        jMenuBar1.add(menuGerar);
+
+        menuAjuda.setText("Ajuda");
+
+        itemSobre.setText("Sobre");
+        menuAjuda.add(itemSobre);
+        itemSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSobreActionPerformed(evt);
+            }
+        });
+
+        jMenuBar1.add(menuAjuda);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -346,11 +374,23 @@ import poo.logica.TableMouseListener;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void itemSobreActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO
+        JOptionPane.showMessageDialog(null, 
+                "Sistema de gerenciamento de funcionarios",
+                "Programa de CAIOEPS",
+                JOptionPane.INFORMATION_MESSAGE);
+    }   
+    
+    private void itemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }   
 
     private void menuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdicionarActionPerformed
         // TODO add your handling code here:        
@@ -404,7 +444,25 @@ import poo.logica.TableMouseListener;
     }//GEN-LAST:event_jPopupMenu1MouseReleased
 
     private void menuVerPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerPerfilActionPerformed
-        // TODO add your handling code here:
+        // TODO
+        int index = this.table.getSelectedRow();
+                
+        if(this.lista.get(index) instanceof Engenheiro){
+            this.perfilGeral = new PerfilGeralFrame((Engenheiro) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Ensino) {
+            this.perfilGeral = new PerfilGeralFrame((Ensino) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Legal) {
+            this.perfilGeral = new PerfilGeralFrame((Legal) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Rh) {
+            this.perfilGeral = new PerfilGeralFrame((Rh) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof SemSuperior) {
+            this.perfilGeral = new PerfilGeralFrame((SemSuperior) this.lista.get(index));
+        } else if (this.lista.get(index) instanceof Tecnico) {
+            this.perfilGeral = new PerfilGeralFrame((Tecnico) this.lista.get(index));
+        }
+        
+        this.perfilGeral.setVisible(true);
+        this.perfilGeral.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuVerPerfilActionPerformed
 
     private void tableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseReleased
@@ -460,25 +518,7 @@ import poo.logica.TableMouseListener;
     }//GEN-LAST:event_menuExcluirActionPerformed
 
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
-        // TODO
-        int index = this.table.getSelectedRow();
-                
-        if(this.lista.get(index) instanceof Engenheiro){
-            this.perfilGeral = new PerfilGeralFrame((Engenheiro) this.lista.get(index));
-        } else if (this.lista.get(index) instanceof Ensino) {
-            this.perfilGeral = new PerfilGeralFrame((Ensino) this.lista.get(index));
-        } else if (this.lista.get(index) instanceof Legal) {
-            this.perfilGeral = new PerfilGeralFrame((Legal) this.lista.get(index));
-        } else if (this.lista.get(index) instanceof Rh) {
-            this.perfilGeral = new PerfilGeralFrame((Rh) this.lista.get(index));
-        } else if (this.lista.get(index) instanceof SemSuperior) {
-            this.perfilGeral = new PerfilGeralFrame((SemSuperior) this.lista.get(index));
-        } else if (this.lista.get(index) instanceof Tecnico) {
-            this.perfilGeral = new PerfilGeralFrame((Tecnico) this.lista.get(index));
-        }
-        
-        this.perfilGeral.setVisible(true);
-        this.perfilGeral.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //TODO
         
         
     }//GEN-LAST:event_menuEditarActionPerformed
@@ -520,7 +560,7 @@ import poo.logica.TableMouseListener;
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JMenuItem itemEngenheiro;
     private javax.swing.JMenuItem itemEnsino;
     private javax.swing.JMenuItem itemLegal;
@@ -528,18 +568,22 @@ import poo.logica.TableMouseListener;
     private javax.swing.JMenuItem itemOrdenarNomeDecresc;
     private javax.swing.JMenuItem itemOrdenarSalarioCresc;
     private javax.swing.JMenuItem itemOrdenarSalarioDecresc;
+    private javax.swing.JMenuItem itemRelatorio;
     private javax.swing.JMenuItem itemRh;
     private javax.swing.JMenuItem itemSemSuperior;
+    private javax.swing.JMenuItem itemSobre;
     private javax.swing.JMenuItem itemTecnico;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem menuAddAnotacao;
     private javax.swing.JMenu menuAdicionar;
+    private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenuItem menuEditar;
     private javax.swing.JMenuItem menuExcluir;
+    private javax.swing.JMenu menuGerar;
     private javax.swing.JMenu menuOrdenar;
     private javax.swing.JMenuItem menuVerPerfil;
     private javax.swing.JTable table;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration     
 }
