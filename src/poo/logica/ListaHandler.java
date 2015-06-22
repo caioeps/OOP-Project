@@ -7,8 +7,9 @@ package poo.logica;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import poo.exceptions.EmpregadoNaoEncontradoException;
-import poo.tipo.Empregado;
+import poo.tipo.*;
 
 /**
  *
@@ -77,6 +78,16 @@ public class ListaHandler {
     	return total;
     }
     
+    public double getSalarioTotalAnual(ArrayList<Empregado> lista){
+    	double total = 0.0;
+    	
+    	for(Empregado emp : lista){
+    		total += emp.getSalario();
+    	}
+    	
+    	return total*13;
+    }
+    
     public double getSalarioMédio(ArrayList<Empregado> lista){
     	double total = 0.0;
     	int n = 0;
@@ -89,11 +100,69 @@ public class ListaHandler {
     	return total/n;
     }
     
+    public double getSalarioMédioAnual(ArrayList<Empregado> lista){
+    	double total = 0.0;
+    	int n = 0;
+    	
+    	for(Empregado emp : lista){
+    		total += emp.getSalario();
+    		n++;
+    	}
+    	
+    	return (total/n)*13;
+    }
+    
     public HashMap<String, Double> getSalarioPorClasse(ArrayList<Empregado> lista){
-    	HashMap<String, Double> aux = new HashMap<String, Double>();
+    	HashMap<String, Double> map = new HashMap<String, Double>();
+    	double aux = 0.0;
     	
+    	//Inicializa
+    	for(Empregado key: lista){
+    		if(key instanceof Engenheiro){
+    			map.put("Engenheiro", 0.0);
+    		}else if(key instanceof Ensino){
+    			map.put("Ensino", 0.0);
+    		}else if(key instanceof Legal){
+    			map.put("Legal", 0.0);
+    		}else if(key instanceof Rh){
+    			map.put("Rh", 0.0);
+    		}else if(key instanceof SemSuperior){
+    			map.put("SemSuperior", 0.0);
+    		}else if(key instanceof Tecnico){
+    			map.put("Tecnico", 0.0);
+    		}
+    	}
     	
-    	return aux;
+    	//Soma a cada um
+    	for(Empregado key: lista){
+    		if(key instanceof Engenheiro){
+    			aux = map.get("Engenheiro");
+    			aux += key.getSalario();
+    			map.put("Engenheiro", aux);
+    		}else if(key instanceof Ensino){
+    			aux = map.get("Ensino");
+    			aux += key.getSalario();
+    			map.put("Ensino", 0.0);
+    		}else if(key instanceof Legal){
+    			aux = map.get("Legal");
+    			aux += key.getSalario();
+    			map.put("Legal", aux);
+    		}else if(key instanceof Rh){
+    			aux = map.get("RH");
+    			aux += key.getSalario();
+    			map.put("RH", aux);
+    		}else if(key instanceof SemSuperior){
+    			aux = map.get("SemSuperior");
+    			aux += key.getSalario();
+    			map.put("SemSuperior", aux);
+    		}else if(key instanceof Tecnico){
+    			aux = map.get("Tecnico");
+    			aux += key.getSalario();
+    			map.put("Tecnico", aux);
+    		}
+    	}
+    	
+    	return map;
     }
     
 }

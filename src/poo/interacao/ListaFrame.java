@@ -1,5 +1,7 @@
 package poo.interacao;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -171,7 +173,8 @@ import poo.logica.TableMouseListener;
         itemOrdenarSalarioCresc = new javax.swing.JMenuItem();
         itemOrdenarSalarioDecresc = new javax.swing.JMenuItem();
         menuGerar = new javax.swing.JMenu();
-        itemRelatorio = new javax.swing.JMenuItem();
+        itemRelatorioGeral = new javax.swing.JMenuItem();
+        itemRelatorioPorClasse = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         itemSobre = new javax.swing.JMenuItem();
 
@@ -342,13 +345,23 @@ import poo.logica.TableMouseListener;
 
         menuGerar.setText("Gerar");
 
-        itemRelatorio.setText("Relatório");
-        itemRelatorio.addActionListener(new java.awt.event.ActionListener() {
+        itemRelatorioGeral.setText("Relatorio Geral");
+        itemRelatorioGeral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemRelatorioActionPerformed(evt);
+                itemRelatorioGeralActionPerformed(evt);
             }
         });
-        menuGerar.add(itemRelatorio);
+        menuGerar.add(itemRelatorioGeral);
+        
+        itemRelatorioPorClasse.setText("Relatorio por Classe");
+        itemRelatorioPorClasse.addActionListener(new java.awt.event.ActionListener() {
+        	public void actionPerformed(ActionEvent evt) {
+        		itemRelatorioPorClasseActionPerformed(evt);
+        	}
+
+        });
+        menuGerar.add(itemRelatorioPorClasse);
+        
 
         jMenuBar1.add(menuGerar);
 
@@ -383,14 +396,48 @@ import poo.logica.TableMouseListener;
     private void itemSobreActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO
         JOptionPane.showMessageDialog(null, 
-                "Sistema de gerenciamento de funcionarios",
+                "Sistema de gerenciamento de funcionarios." + System.lineSeparator() + "V1.0",
                 "Programa de CAIOEPS",
                 JOptionPane.INFORMATION_MESSAGE);
     }   
     
-    private void itemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
+    private void itemRelatorioGeralActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO 
+    	try {
+			this.escritor = new Escritor(this);
+			this.escritor.escreveRelatorioGeral();
+			JOptionPane.showMessageDialog(null, 
+	                "Relatorio salvo em " + this.escritor.getNomeRelatorioAtual(),
+	                "Relatorio gerado com sucesso",
+	                JOptionPane.INFORMATION_MESSAGE);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, 
+	                "Erro ao escrever o relatorio.",
+	                "ERRO",
+	                JOptionPane.INFORMATION_MESSAGE);
+		}
     }   
+    
+    private void itemRelatorioPorClasseActionPerformed(java.awt.event.ActionEvent evt){
+    	//TODO
+    	
+    	try {
+    		this.escritor = new Escritor(this);
+			escritor.escreveRelatorioPorClasse();
+			JOptionPane.showMessageDialog(null, 
+					"Relatorio salvo em " + this.escritor.getNomeRelatorioAtual(),
+	                "Relatorio gerado com sucesso",
+	                JOptionPane.INFORMATION_MESSAGE);
+			
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, 
+	                "Erro ao escrever o relatorio.",
+	                "ERRO",
+	                JOptionPane.INFORMATION_MESSAGE);
+		}
+    	
+    }
 
     private void menuAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAdicionarActionPerformed
         // TODO add your handling code here:        
@@ -568,7 +615,8 @@ import poo.logica.TableMouseListener;
     private javax.swing.JMenuItem itemOrdenarNomeDecresc;
     private javax.swing.JMenuItem itemOrdenarSalarioCresc;
     private javax.swing.JMenuItem itemOrdenarSalarioDecresc;
-    private javax.swing.JMenuItem itemRelatorio;
+    private javax.swing.JMenuItem itemRelatorioGeral;
+    private javax.swing.JMenuItem itemRelatorioPorClasse;
     private javax.swing.JMenuItem itemRh;
     private javax.swing.JMenuItem itemSemSuperior;
     private javax.swing.JMenuItem itemSobre;
