@@ -6,6 +6,7 @@
 package poo.logica;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import poo.exceptions.EmpregadoNaoEncontradoException;
 import poo.tipo.Empregado;
 
@@ -13,10 +14,9 @@ import poo.tipo.Empregado;
  *
  * @author caioe_000
  */
-public class Lista {
-    
-    
-    public Lista(){
+public class ListaHandler {
+        
+    public ListaHandler(){
         
     }
     
@@ -65,6 +65,35 @@ public class Lista {
 
             return aux;
 
+    }
+    
+    public double getSalarioTotal(ArrayList<Empregado> lista){
+    	double total = 0.0;
+    	
+    	for(Empregado emp : lista){
+    		total += emp.getSalario();
+    	}
+    	
+    	return total;
+    }
+    
+    public double getSalarioMédio(ArrayList<Empregado> lista){
+    	double total = 0.0;
+    	int n = 0;
+    	
+    	for(Empregado emp : lista){
+    		total += emp.getSalario();
+    		n++;
+    	}
+    	
+    	return total/n;
+    }
+    
+    public HashMap<String, Double> getSalarioPorClasse(ArrayList<Empregado> lista){
+    	HashMap<String, Double> aux = new HashMap<String, Double>();
+    	
+    	
+    	return aux;
     }
     
 }

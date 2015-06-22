@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import poo.logica.Escritor;
-import poo.logica.Lista;
+import poo.logica.ListaHandler;
 import poo.logica.Serializador;
 import poo.logica.TableMouseListener;
 
@@ -38,7 +38,7 @@ import poo.logica.TableMouseListener;
     // ^^^^ FRAMES
     
     private ArrayList<Empregado> lista;
-    private Lista listaHandler;
+    private ListaHandler listaHandler;
     private Escritor escritor;
     
         

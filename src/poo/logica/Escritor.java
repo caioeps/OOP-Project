@@ -31,11 +31,15 @@ public class Escritor implements java.io.Serializable {
     private Rh rh;
     private SemSuperior sp;
     private Tecnico tec;
+    
     private ArrayList<Empregado> lista;
+    private ListaHandler listaHandler;
+    
     private String newLine = System.lineSeparator();
 	
     public Escritor(ArrayList<Empregado> lista){
         this.lista = lista;
+        this.listaHandler = new ListaHandler();
     }
     
     public void preencheCampos(Empregado key, File file, FileWriter fw) throws IOException{    	
@@ -47,7 +51,7 @@ public class Escritor implements java.io.Serializable {
 		fw.write("Data de admissao: " + key.getDataAdm().get(0) + "/" + key.getDataAdm().get(1) + "/" + key.getDataAdm().get(2));
 		
 		//ACIMA -> Propriedades comuns a todos os empregados
-		//ABAIXO -> Proprieades particulares
+		//ABAIXO -> Propriedes particulares
 		
 		if(key instanceof Engenheiro){
 			this.eng = (Engenheiro) key;
@@ -73,6 +77,7 @@ public class Escritor implements java.io.Serializable {
 			this.tec = (Tecnico) key;
 			fw.write("Licensa: " + this.tec.getLicensa());
 		}
+		fw.write(newLine + "----------------------");
 		
     }
         
