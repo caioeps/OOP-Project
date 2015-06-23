@@ -157,13 +157,13 @@ public class Escritor implements java.io.Serializable {
                 //Escreve o arquivo
         		fw.write("Numero de empregados: " + this.lista.size());
         		fw.write(newLine);
-        		fw.write("Gasto total com salario por mês: " + this.listaHandler.getSalarioTotal(this.lista));
+        		fw.write("Gasto total com salario por mï¿½s: " + this.listaHandler.getSalarioTotal(this.lista));
         		fw.write(newLine);
         		fw.write("Gasto total com salario por ano: " + this.listaHandler.getSalarioTotalAnual(this.lista));
         		fw.write(newLine);
-        		fw.write("Salario medio dos funcionarios: " + this.listaHandler.getSalarioMédio(this.lista));
+        		fw.write("Salario medio dos funcionarios: " + this.listaHandler.getSalarioMedio(this.lista));
         		fw.write(newLine);
-        		fw.write("Salario medio anual dos funcionarios: " + this.listaHandler.getSalarioMédioAnual(this.lista));
+        		fw.write("Salario medio anual dos funcionarios: " + this.listaHandler.getSalarioMedioAnual(this.lista));
         		fw.write(newLine);
         		
                 

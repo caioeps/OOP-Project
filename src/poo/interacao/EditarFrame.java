@@ -17,13 +17,13 @@ import javax.swing.JOptionPane;
  *
  * @author caioe_000
  */
-public class AddFrameTecnico extends javax.swing.JFrame {
+public class EditarFrame extends javax.swing.JFrame {
     //Minhas variaveis
     private Empregado emp;
     private ListaFrame listaFrame; //Para copiar, modificar e retornar a lista de alunos.
     
-    //Minhas funçoes
-    public AddFrameTecnico(ListaFrame listaFrame) {
+    //Minhas funï¿½oes
+    public EditarFrame(ListaFrame listaFrame) {
         initComponents();
         this.listaFrame = listaFrame;
     }
@@ -139,7 +139,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         fieldNome = new javax.swing.JTextField();
         fieldSalario = new javax.swing.JTextField();
         fieldEmail = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JToggleButton();
+        btnSalvar = new javax.swing.JToggleButton();
         labelCpf = new javax.swing.JLabel();
         fieldCpf = new javax.swing.JTextField();
         labelEmail1 = new javax.swing.JLabel();
@@ -147,8 +147,14 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         boxMes = new javax.swing.JComboBox();
         fieldAno = new javax.swing.JTextField();
         fieldLicensa = new javax.swing.JTextField();
-        labelLicensa = new javax.swing.JLabel();
+        labelCampo = new javax.swing.JLabel();
         btnLimparCampos = new javax.swing.JButton();
+        labelAumento = new javax.swing.JLabel();
+        fieldAumento = new javax.swing.JTextField();
+        labelAumentoPorc = new javax.swing.JLabel();
+        fieldAumentoPorc = new javax.swing.JTextField();
+        btnOk2 = new javax.swing.JButton();
+        btnOk1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -177,10 +183,10 @@ public class AddFrameTecnico extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -216,7 +222,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
             }
         });
 
-        labelLicensa.setText("Licensa");
+        labelCampo.setText("Campo");
 
         btnLimparCampos.setText("Limpar campos");
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
@@ -225,6 +231,20 @@ public class AddFrameTecnico extends javax.swing.JFrame {
             }
         });
 
+        labelAumento.setText("Aumento salario");
+
+        fieldAumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldAumentoActionPerformed(evt);
+            }
+        });
+
+        labelAumentoPorc.setText("Aumento porcentual");
+
+        btnOk2.setText("OK");
+
+        btnOk1.setText("OK");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -232,12 +252,6 @@ public class AddFrameTecnico extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnLimparCampos)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAdd)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelNome)
@@ -252,9 +266,13 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                         .addComponent(fieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelCampo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fieldLicensa, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,13 +281,27 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
                                 .addComponent(labelEmail1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelLicensa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(fieldLicensa, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnLimparCampos)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSalvar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelAumentoPorc)
+                                    .addComponent(labelAumento))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fieldAumento)
+                                    .addComponent(fieldAumentoPorc, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnOk2)
+                                    .addComponent(btnOk1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(6, 6, 6))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,18 +324,25 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelLicensa)
+                    .addComponent(labelCampo)
                     .addComponent(fieldLicensa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(labelEmail1)
-                .addGap(10, 10, 10)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEmail1)
+                    .addComponent(labelAumento)
+                    .addComponent(fieldAumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOk1))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boxDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                    .addComponent(fieldAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAumentoPorc)
+                    .addComponent(fieldAumentoPorc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOk2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
+                    .addComponent(btnSalvar)
                     .addComponent(btnLimparCampos))
                 .addContainerGap())
         );
@@ -323,7 +362,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldEmailActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         String nome=null, email=null, cpf=null, licensa=null; //Apenas inicializando para posterior checagem
         Double salario=null;
         ArrayList<Integer> data = new ArrayList<>();
@@ -350,7 +389,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         
         if(!this.fieldLicensa.getText().isEmpty())  licensa = this.fieldLicensa.getText();
         else{
-            this.labelLicensa.setText("<HTML><font color=black>Licensa</font><font color=red>*</font></HTML>"); //Funcao*, com * em vermelho
+            this.labelCampo.setText("<HTML><font color=black>Licensa</font><font color=red>*</font></HTML>"); //Funcao*, com * em vermelho
         }
         
         data.add(Integer.parseInt(this.fieldAno.getText())); //Pega o campo ano e transforma p/ int
@@ -374,7 +413,7 @@ public class AddFrameTecnico extends javax.swing.JFrame {
                     "ERRO",
                     JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void fieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCpfActionPerformed
         // TODO add your handling code here:
@@ -401,6 +440,10 @@ public class AddFrameTecnico extends javax.swing.JFrame {
         this.fieldAno.setText("");
     }//GEN-LAST:event_btnLimparCamposActionPerformed
 
+    private void fieldAumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldAumentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,18 +451,24 @@ public class AddFrameTecnico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox boxDia;
     private javax.swing.JComboBox boxMes;
-    private javax.swing.JToggleButton btnAdd;
     private javax.swing.JButton btnLimparCampos;
+    private javax.swing.JButton btnOk1;
+    private javax.swing.JButton btnOk2;
+    private javax.swing.JToggleButton btnSalvar;
     private javax.swing.JTextField fieldAno;
+    private javax.swing.JTextField fieldAumento;
+    private javax.swing.JTextField fieldAumentoPorc;
     private javax.swing.JTextField fieldCpf;
     private javax.swing.JTextField fieldEmail;
     private javax.swing.JTextField fieldLicensa;
     private javax.swing.JTextField fieldNome;
     private javax.swing.JTextField fieldSalario;
+    private javax.swing.JLabel labelAumento;
+    private javax.swing.JLabel labelAumentoPorc;
+    private javax.swing.JLabel labelCampo;
     private javax.swing.JLabel labelCpf;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelEmail1;
-    private javax.swing.JLabel labelLicensa;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSalario;
     // End of variables declaration//GEN-END:variables

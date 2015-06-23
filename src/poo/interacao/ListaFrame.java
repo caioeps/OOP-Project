@@ -37,6 +37,7 @@ import poo.logica.TableMouseListener;
     private AddFrameTecnico frameTecnico;
     private AddNotesFrame addNotes;
     private PerfilGeralFrame perfilGeral;
+    private EditFrame editFrame;
     // ^^^^ FRAMES
     
     private ArrayList<Empregado> lista;
@@ -566,7 +567,10 @@ import poo.logica.TableMouseListener;
 
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
         //TODO
-        
+    	
+        this.editFrame = new EditFrame(this, this.table.getSelectedRow());
+        editFrame.setVisible(true);
+        editFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }//GEN-LAST:event_menuEditarActionPerformed
 

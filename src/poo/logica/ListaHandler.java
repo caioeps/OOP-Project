@@ -88,7 +88,7 @@ public class ListaHandler {
     	return total*13;
     }
     
-    public double getSalarioMédio(ArrayList<Empregado> lista){
+    public double getSalarioMedio(ArrayList<Empregado> lista){
     	double total = 0.0;
     	int n = 0;
     	
@@ -100,7 +100,7 @@ public class ListaHandler {
     	return total/n;
     }
     
-    public double getSalarioMédioAnual(ArrayList<Empregado> lista){
+    public double getSalarioMedioAnual(ArrayList<Empregado> lista){
     	double total = 0.0;
     	int n = 0;
     	
