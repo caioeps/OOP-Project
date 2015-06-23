@@ -117,48 +117,46 @@ public class ListaHandler {
     	double aux = 0.0;
     	
     	//Inicializa
-    	for(Empregado key: lista){
-    		if(key instanceof Engenheiro){
-    			map.put("Engenheiro", 0.0);
-    		}else if(key instanceof Ensino){
-    			map.put("Ensino", 0.0);
-    		}else if(key instanceof Legal){
-    			map.put("Legal", 0.0);
-    		}else if(key instanceof Rh){
-    			map.put("Rh", 0.0);
-    		}else if(key instanceof SemSuperior){
-    			map.put("SemSuperior", 0.0);
-    		}else if(key instanceof Tecnico){
-    			map.put("Tecnico", 0.0);
-    		}
-    	}
-    	
+    	map.put("Engenheiro", 0.0);
+    	map.put("Ensino", 0.0);
+    	map.put("Legal", 0.0);
+    	map.put("Recursos humanos", 0.0);
+    	map.put("Sem Superior", 0.0);
+    	map.put("Tecnico", 0.0);
+    	    	
     	//Soma a cada um
     	for(Empregado key: lista){
-    		if(key instanceof Engenheiro){
+    		if(key instanceof Engenheiro){ 			
     			aux = map.get("Engenheiro");
     			aux += key.getSalario();
     			map.put("Engenheiro", aux);
+
     		}else if(key instanceof Ensino){
     			aux = map.get("Ensino");
     			aux += key.getSalario();
     			map.put("Ensino", 0.0);
+
     		}else if(key instanceof Legal){
     			aux = map.get("Legal");
     			aux += key.getSalario();
     			map.put("Legal", aux);
+
     		}else if(key instanceof Rh){
-    			aux = map.get("RH");
+    			aux = map.get("Recursos humanos");
     			aux += key.getSalario();
-    			map.put("RH", aux);
+    			map.put("Recursos humanos", aux);
+
     		}else if(key instanceof SemSuperior){
-    			aux = map.get("SemSuperior");
+    			aux = map.get("Sem Superior");
     			aux += key.getSalario();
-    			map.put("SemSuperior", aux);
+    			map.put("Sem Superior", aux);
+    			
+ 
     		}else if(key instanceof Tecnico){
     			aux = map.get("Tecnico");
     			aux += key.getSalario();
-    			map.put("Tecnico", aux);
+    			map.put("Tecnico", aux);   			
+    			
     		}
     	}
     	

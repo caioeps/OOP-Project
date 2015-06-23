@@ -198,12 +198,12 @@ public class Escritor implements java.io.Serializable {
                 	String key = entry.getKey();
                 	Double valor = entry.getValue();
                 	
-                	fw.write(key + "----------->");
+                	fw.write(key + " ----------->");
                 	fw.write(newLine);
                 	fw.write("Salario total gasto com funcionarios do tipo " + key + ": R$" + valor);
                 	fw.write(newLine);
                 	fw.write("Salario total gasto anualmente com funcionarios do tipo " + key + ": R$" + valor*13);
-                	fw.write(newLine);
+                	fw.write(newLine + newLine);
                 }
                 
                 fw.close();
