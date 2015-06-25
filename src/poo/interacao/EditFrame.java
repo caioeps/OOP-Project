@@ -284,8 +284,10 @@ public class EditFrame extends javax.swing.JFrame {
             }
         });
 
-        labelAumento.setText("Aumento salario");
+        labelAumento.setText("Aumento líquido");
+        labelAumentoPorc.setText("Aumento porcentual");
         
+        btnOk1.setText("OK");
         btnOk1.addActionListener(new ActionListener(){
         	@Override
         	public void actionPerformed(ActionEvent evt){
@@ -293,6 +295,7 @@ public class EditFrame extends javax.swing.JFrame {
         	}
         });
         
+        btnOk2.setText("OK");
         btnOk2.addActionListener(new ActionListener(){
         	@Override
         	public void actionPerformed(ActionEvent evt){

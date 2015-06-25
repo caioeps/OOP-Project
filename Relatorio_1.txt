@@ -1,0 +1,143 @@
+Numero de empregados: 15
+Gasto total com salario por m�s: 5.0117563E7
+Gasto total com salario por ano: 6.51528319E8
+Salario medio dos funcionarios: 3341170.8666666667
+Salario medio anual dos funcionarios: 4.3435221266666666E7
+
+Tecnico(a) --------------->
+ Nome: tec
+ Salario: R$2.3323233E7
+ CPF: 232323
+ Email: 232323
+ Data de admissao: 2323/1/1
+ Licensa: 32323
+
+
+Tecnico(a) --------------->
+ Nome: tec2
+ Salario: R$2.3232323E7
+ CPF: gfsdfds
+ Email: gfsdfds
+ Data de admissao: 343434/1/1
+ Licensa: dsfsdf
+
+
+Tecnico(a) --------------->
+ Nome: dsdsd
+ Salario: R$2323232.0
+ CPF: dsadsa
+ Email: dsadsa
+ Data de admissao: 3434/1/1
+ Licensa: sfdsf
+
+
+Legal --------------->
+ Nome: gfdgfdg
+ Salario: R$454545.0
+ CPF: fdgfdg
+ Email: fdgfdg
+ Data de admissao: 45454/1/1
+ Cargo: dgfdg
+
+
+Engenheiro(a) --------------->
+ Nome: eng
+ Salario: R$232323.0
+ CPF: 232323
+ Email: 232323
+ Data de admissao: 2323/1/1
+ Area: 32323
+
+
+Ensino --------------->
+ Nome: ens
+ Salario: R$232323.0
+ CPF: 23232
+ Email: 23232
+ Data de admissao: 2323/1/1
+ Formacao: 32323
+
+
+Sem Superior --------------->
+ Nome: SP
+ Salario: R$232132.0
+ CPF: 1323
+ Email: 1323
+ Data de admissao: 33232/1/1
+ Funcao: 3232
+
+
+Recursos Humanos --------------->
+ Nome: RH
+ Salario: R$23232.0
+ CPF: 32
+ Email: 32
+ Data de admissao: 23232/1/1
+ Funcao: 323
+
+
+Recursos Humanos --------------->
+ Nome: 121212
+ Salario: R$21212.0
+ CPF: 1212
+ Email: 1212
+ Data de admissao: 1111/6/7
+ Funcao: 1212
+
+
+Sem Superior --------------->
+ Nome: Nilson
+ Salario: R$10008.0
+ CPF: 415651523
+ Email: 415651523
+ Data de admissao: 2000/1/1
+ Funcao: The boss
+
+
+Recursos Humanos --------------->
+ Nome: Sara Lonngren
+ Salario: R$9000.0
+ CPF: 4565456
+ Email: 4565456
+ Data de admissao: 232323/5/5
+ Funcao: 23232323
+
+  Nota 1: Sara hta teleinfo
+  Nota 2: outra
+
+Engenheiro(a) --------------->
+ Nome: Caio Ergos
+ Salario: R$6000.0
+ CPF: 000000000
+ Email: 000000000
+ Data de admissao: 2000/1/1
+ Area: Computacao
+
+
+Tecnico(a) --------------->
+ Nome: Caio Ergos
+ Salario: R$6000.0
+ CPF: 000000000
+ Email: 000000000
+ Data de admissao: 2000/2/2
+ Licensa: wut
+
+  Nota 1: Algo de errado nao esta certo
+
+Tecnico(a) --------------->
+ Nome: Caio Ergos duplicado
+ Salario: R$6000.0
+ CPF: 000000000dsadasd
+ Email: 000000000dsadasd
+ Data de admissao: 2000/2/2
+ Licensa: ainda comp
+
+
+Legal --------------->
+ Nome: Virginia Parente
+ Salario: R$6000.0
+ CPF: 605516354156
+ Email: 605516354156
+ Data de admissao: 1989/1/1
+ Cargo: Administradora
+

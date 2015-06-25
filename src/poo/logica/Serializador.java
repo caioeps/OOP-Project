@@ -21,7 +21,8 @@ import poo.tipo.Empregado;
  * @author caioe_000
  */
 public class Serializador {
-       
+    
+	
     public Serializador(){
         
     }
